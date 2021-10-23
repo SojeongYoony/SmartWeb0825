@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" integrity="sha512-Cb0WDP6lVyVaQJulFMEOBGpkgqU6UAOEBpthbb9BfdhmUXnmYQwobuCm6Xp2YYL6Pd/l0ZA5Up/ijp0fu+nFpQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {font-family: Verdana, Geneva, Tahoma, sans-serif;}
+        body, div, dl, li, ol, dl, dt, dd{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 500px;
+            background-color: rgb(240, 248, 255);
+            margin: 0 auto;
+        }
+        .w_all {
+            width: 400px;
+            margin: 0 auto;
+        }
+        .login_img {
+            text-align: center;
+            padding: 80px 0 10px 0 ;
+        }
+        .input_box {
+            width: 100%;
+            margin: 30px auto;
+        }
+        .input_log{
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid rgba(192, 192, 192, 0.4);
+            border-radius: 2px;
+            background-color: white;
+        }
+        .input_log > input{
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
+        span {
+            display: block;
+            width: 390px;
+            padding: 10px 0;
+            margin: 0 auto;
+            background-color: navy;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+        }
+        span:hover{
+            text-decoration: underline;
+        }
+        .check_login {
+            margin-top: 15px;
+        }
+        .w_set {
+            text-align: center;
+            padding: 15px 0 90px 0;
+        }
+        .w_set a:hover{
+            text-decoration: underline;
+        }
+        label{
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+            color: gray;
+        }
+        i {
+            padding-right: 7px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="POST">
+            <div class="w_all">
+                <div class="login_img">
+                    <img src="logo.png">
+                </div>
+                <div class="input_box">
+                    <p class="input_log"><input type="text" name="id" placeholder="계정" required></p> <!-- autofocus -->
+                    <p class="input_log"><input type="password" name="pw" placeholder="비밀번호" required></p>
+                </div>
+                <div class="btn">
+                    <a href="board.html" ><span>로그인</span></a>  <!-- submit 버튼자리.. -->
+                </div>
+            </form>
+                <div>
+                    <input class="check_login" id="autologin" type="checkbox" checked>
+                    <label for="autologin">자동 로그인</label>
+                    <input class="check_login" id="savepw" type="checkbox" checked>
+                    <label for="savepw">비밀번호 저장</label>
+                </div>
+                <div class="w_set">
+                    <a href="#">
+                        <i id="icon" class="fas fa-cog"></i>환경설정
+                    </a>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

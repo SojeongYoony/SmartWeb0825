@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* width, height 속성은 블록레벨에만 적용된다. */
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        /* width, height 속성은 인라인 */
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: teal;
+        }
+        .box3 {
+            width: 200px;
+            height: 100px;
+            background-color: black;
+        }
+        /* %단위는 부모의 크기(width, height)가 기준이다. */
+        .box3 > .a {
+            width: 50%;         /* 부모(.box3) width의 50% = 100px */
+            height: 100%;       /* 부모(.box3) height의 100% = 100px */
+            background-color: violet ;
+        }
+        .box3 > .b {
+            width: 10%;         /* 부모(.box3) width의 10% = 20px */
+            height: 50%;       /* 부모(.box3) height의 100% = 50px */
+            background-color: wheat ;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        블록레벨 구역
+    </div>
+    <span class="box2">
+        인라인레벨 구역
+    </span>
+
+    <br>
+    <!-- test for ?: 자식 div를 span으로 바꿔도 부모 크기에 영향을 받나요? -->
+
+    <div class="box3">
+        <span class="a">
+            3구역 A
+        </span>
+        <span class="b">
+            3구역 B
+        </span>
+    </div>
+</body>
+</html>

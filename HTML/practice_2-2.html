@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>제목</title>
+    </head>
+    <body>
+        <h2>연습문제-1</h2>
+        <form action="01_overview.html">
+            <input list="domains" type="text" name="a" placeholder="example@naver.com">
+            <datalist id="id">
+                <option value="gmail.com"/>
+                <option value="kakao.com"/>
+                <option value="naver.com"/>
+            </datalist>&nbsp;
+            <input type="password" name="b" placeholder="비밀번호">&nbsp;
+            <button>로그인</button>
+        </form>
+        <h2>연습문제-2</h2>
+            <form>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="a" placeholder="아이디" ></td>
+                            <td rowspan="2"><button style=height:50px;>로그인</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" name="pw" placeholder="비밀번호"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+        </form>
+        <h2>연습문제-3</h2>
+        <form>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">개인 정보 작성</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td> 이름</td>
+                            <td><input type="text" name="a" ></td>
+                    </tr>
+                    <tr>
+                        <td>메일 주소</td>
+                        <td><input list="domains" type="text" name="domain">
+                            <datalist id="domains">
+                                <option value="gmail.com"/>
+                                <option value="kakao.com"/>
+                                <option value="naver.com"/>
+                            </datalist></td>
+                    </tr>
+                    <tr>
+                        <td>연락처</td>
+                        <td><input type="number" name="b"></td>
+                    </tr>
+                    <tr>
+                        <td>블로그/홈페이지</td>
+                        <td><input type="text" name="blg/hpg"><br></td>
+                    </tr>
+                </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">
+                        <button>제출하기</button>
+                        <input type="reset" value="다시작성">
+                    </th>
+                </tr>
+                
+                
+                </tfoot>
+            </table>
+        </form>
+
+
+
+    </body>
+</html>

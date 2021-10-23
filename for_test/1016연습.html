@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .odd, .even {
+            padding: 5px 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 
+        연습1. 이름, 국어, 영어, 수학 점수를 순서대로 입력 받고
+               화면에 이름, 평균, 학점(A, B, C, D, F)을 출력하시오.
+    -->
+    <!-- 
+        <ul>
+        <li>이름 : <span id="name"></span></li>
+        <li>평균 : <span id="average"></span></li>
+        <li>학점 : <span id="grade"></span></li>
+    </ul>
+    
+    <script>
+        let name = prompt("이름을 입력하시오");
+        let kor = Math.floor(prompt("국어점수"));
+        let eng = Math.floor(prompt("영어점수"));
+        let mat = Math.floor(prompt("수학점수"));
+        let average = (kor+eng+mat)/3
+        let grade;
+        if (average<0 || average>100) {
+            grade = alert("잘못 된 점수");
+        } else if (average >=90) {
+            grade = 'A';
+        } else if (average >= 80) {
+            grade = 'B'; 
+        } else if (average >= 70) {
+            grade = 'C';
+        } else if (average >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        document.getElementById('name').textContent = name;
+        document.getElementById('average').textContent = average;
+        document.getElementById('grade').textContent = grade;
+    </script> 
+    -->
+
+    <!-- 연습 box1 객체에 style 적용 시키기 -->
+    <!-- 
+    <div id = "box1">Box1</div>
+    <script>
+        let box1 = document.getElementById('box1');
+        box1.style.width = "200px";
+        box1.style.height = "200px";
+        box1.style.backgroundColor = "orange";
+        box1.style.margin = "0 auto";
+        box1.style.border = "1px solid black";
+        box1.style.textAlign = "center";
+        box1.style.lineHeight = "200px";
+    </script>
+     -->
+
+    <!-- 연습2. 순서대로 3개의 정수를 입력 받아서 가장 큰 수를 출력하시오. -->
+<!--      
+    <div id="max_value"></div>
+    <script>
+        let number1 = parseInt(prompt('숫자 입력 1'));
+        let number2 = parseInt(prompt('숫자 입력 2'));
+        let number3 = parseInt(prompt('숫자 입력 3'));
+
+        let max_value;
+        if (number1 > number2 && number1 > number3) {
+            max_value = number1;
+        } else if (number2 > number1 && number2 > number3) {
+            max_value = number2;
+        } else {
+            max_value = number3;
+        }
+        document.getElementById('max_value').textContent = max_value;
+
+    </script> 
+-->
+
+    <!-- 1 2 3 4 5 6 7 8 9 10 -->
+<!-- 
+    <div id="box1"></div>
+    <script>
+        let number;
+        for(let i = 1; i <=10; i++) {
+            document.getElementById('box1').innerHTML += i + '&nbsp';
+        }
+    </script>
+-->
+
+<!-- 연습1. 목록 태그로 1 ~ 5 출력하기 -->
+<!--
+    
+    <div id="box2"></div>
+    <script>
+        /* 
+        let box2 = document.getElementById('box2')
+        let ul = document.createElement('ul');
+        for(let i = 1; i <= 5; i++) {
+            let li = document.createElement('li');
+            li.textContent = i;
+            ul.appendChild(li);
+        }
+        box2.appendChild(ul); 
+        */
+        /*
+        let result = '<ul>';
+            for (let i = 1; i <= 5; i++ ) {
+                result += '<li>' + i + '</li>';
+            }
+            result += '</ul>';
+            document.getElementById('box2').innerHTML = result;
+            */
+        </script>
+    -->
+    
+    <!-- 연습2. select 태그 만들기 -->
+    <!-- 
+        <select name="month">
+            <option value="">월 선택</option>
+            <option value="1">1월</option>
+            <option value="2">1월</option>
+            ...
+            <option value="12">12월</option>
+        </select>
+    -->
+    <!--     
+        <div id="box3"></div>
+        <script>
+            let selectList = '<select name="month"><option value="">월 선택</option>';
+                for (let month = 1; month <=12; month++){
+            selectList += '<option value="' + month + '">' + month + '월</option>'; 
+        }
+        selectList += '</option>';
+        document.getElementById('box3').innerHTML = selectList;
+    </script>
+-->
+    
+    <!-- 연습3. table 태그 만들기 -->
+    <!-- 
+        1   2   3
+        4   5   6
+        7   8   9
+        *   0   #
+     -->
+    
+  <!--      
+        <div id="box4"></div>
+        <script>
+            
+            // let table = '<table border="1"><tbody>';    
+            //     let num = 1;
+            //     for (let row = 1; row <=4; row++) {
+            // table += '<tr>';
+            //     for(let col = 1; col <=3; col++){
+            //         if (num <= 9){
+            //             table += '<td>' + num + '</td>';
+            //         } else if (num == 10) {
+            //             table += '<td>*</td>';
+            //         } else if (num == 11) {
+            //             table += '<td>0</td>';
+            //         } else if (num == 12) {
+            //             table += '<td>#</td>';
+            //         }
+            //         num++ ; 
+            //     }
+            //     table += '</tr>';
+            // }
+            // table += '</tbody></table>';
+            // document.getElementById('box4').innerHTML = table;
+            
+            let table = '<table border="1"><tbody>';        // table 이라는 변수 생성 : 여기에 table 안에 들어갈 모든 태그들을 저장할 것임.
+        let num = 1;                                        // 테이블 안에 들어갈 숫자 
+        for (let row = 1; row <= 4; row++) {                // tr을 생성할 for문 : row 4줄 생성, 1부터 시작, row의 값이 4가 되면 for문 끝
+                table += '<tr>';                            // table 변수에 <tr>을 더해줌 : '<table border="1"><tbody>' + '<tr>'
+                        for (let col = 1; col <=3; col++) { // td를 생성할 for문 : 3개 column, 1부터 시작해서 col의 값이 3이 되면 for문 끝
+                                                            // col의 값이 한번 충족 되면 185번 line의 for문이 시작 -> 다시 187번 for문이 실행 됨
+                                switch(true) {              // switch의 값이 true일 경우 계속 실행
+                                        case num <= 9  : table +='<td>' + num + '</td>'; break;     
+                                        // num변수 안에 담긴 숫자를 비교하여 9이하(9<=)이면 table에 '<td>'+num변수에 저장된 값 +'</td>'를 저장 후 break를 통해 빠져나옴 
+                                        //                      : '<table border="1"><tbody>'+'<tr>'+'<td> 1</td>' -> for문 첫 번째 실행결과
+                                        //
+                                        case num == 10 : table +='<td>*</td>'; break;       // num의 값이 10일경우 <td>*</td>값이 들어감
+                                        case num == 11 : table +='<td>0</td>'; break;       // num의 값이 11일경우 <td>0</td>값이 들어감
+                                        case num == 12 : table +='<td>#</td>'; break;       // num의 값이 12일경우 <td>#</td>값이 들어감
+                                    }
+                                    num++;
+                                    // 190번 line실행 후 num에 ++ 되어 1+1이 됨 : num에 저장된 값 : 2
+                                    // 이 구간이 실행된 후에 187번 line for문으로 들어가서 col++가 됨 : col = 2 
+                                    // 185번 라인 for문 -> 187번 라인 for문 -> 190번 switch문 순으로 실행되고 num이 13이 되면 switch문에서 false값이 떨어져 실행이 중지
+                }
+                table += '</tr>';       // 187번의 for문이 종료되면 빠져나와 table에 '</tr>'을 추가 함 
+                                        // table에 저장 된 데이터 
+                                        // 185번 for문 첫번 째 실행 후 저장 된 데이터 :  <tr><td> 1 </td><td> 2 </td><td> 3 </td></tr>
+                                        // 185번 for문 두번 째 실행 후 저장 된 데이터 :  <tr><td> 4 </td><td> 5 </td><td> 6 </td></tr>
+                                        // 185번 for문 세번 째 실행 후 저장 된 데이터 :  <tr><td> 7 </td><td> 8 </td><td> 9 </td></tr>
+                                        // 185번 for문 네번 째 실행 후 저장 된 데이터 :  <tr><td> * </td><td> 0 </td><td> # </td></tr>
+        }                               // 185번 for문이 네번 실행 된 후 for문 종료 지점
+        table += '</tbody></table>';    // for문이 종료 되면 '</tbody></table>' 닫힘 태그 저장 
+                                        // 183번 <table><tbody> + 205~208번 저장 되고 + 210번 </tbody></table> 저장되어 있음
+        document.getElementById('box4').innerHTML = table;  // box4라는 dom(객체)를 id로 불러와 거기에 table에 저장된 HTML 문구를 삽입 
+    </script>    
+-->
+    
+     <!-- 
+         전체 구구단 출력하기
+         짝수단과 홀수단의 배경색 다르게 지정하기
+         짝수단은 <td class="even">
+         홀수단은 <td class="odd">
+      -->
+    <!-- <div id="box5"></div>
+    <script>
+        let table = '<table border="1" style="border-collapse:collapse"><tbody>';
+            for(let tr=1; tr<=9; tr++){     
+                table += '<tr>';   // <table><tbody><tr> 
+                for(let td=2; td<=9; td++){
+                    let value = td + 'x' + tr + '=' + (td*tr);  // 2x1=2
+                    // table += '<td>'+ value +'</td>'; //<table><tbody><tr><td>2x1=2</td>
+                        if(td%2==0) {
+                            table += '<td class ="even" style="background-color:orange">' + value + '</td>';
+                        } else {
+                            table += '<td class="odd" style="background-color:burlywood">' + value + '</td>';
+                        }
+                }
+                table+= '</tr>';
+            }
+        table += '</tbody></table>';            // <table><tbody><tr><td>2x1=2</td></tr></tbody></table>
+        document.getElementById('box5').innerHTML = table;// <div id="box5"><table><tbody><tr><td>2x1=2</td></tr></tbody></table></div>
+    </script> -->
+  
+    <!-- 
+         전체 구구단 출력하기
+         짝수단과 홀수단의 배경색 다르게 지정하기
+         짝수단은 <td class="even">
+         홀수단은 <td class="odd">
+      -->
+
+      <div id="box"></div>
+      <script>
+          let table = '<table border="1" style="border-collapse:collapse"><tbody>';
+          for(let tr = 1; tr <= 9; tr++) {
+              table += '<tr>';
+              for (let td = 2; td <=9; td++){
+                  let num = td + 'x' + tr + '=' + (td*tr);
+                  if (td %2 == 0){
+                    table +='<td class="even">' + num + '</td>';
+                  } else {
+                      table += '<td class="odd">' + num + '</td>';
+                  } num ++
+
+              } table += '</tr>';
+          }
+          table += '</tbody></table>';
+          document.getElementById('box').innerHTML = table;
+      </script>
+    
+</body>
+</html>

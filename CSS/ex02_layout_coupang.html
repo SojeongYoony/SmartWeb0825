@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" integrity="sha512-Cb0WDP6lVyVaQJulFMEOBGpkgqU6UAOEBpthbb9BfdhmUXnmYQwobuCm6Xp2YYL6Pd/l0ZA5Up/ijp0fu+nFpQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .wrap {
+            width: 460px;
+            margin: 0 auto;
+        }
+        header {
+            padding-top: 50px;
+        }
+        .logo {
+            width: 160px;
+            margin: 0 auto;
+        }
+        .logo img {
+            width: 100%;  /* =160 */
+        }
+        .section_title{
+            font-weight: 900;
+            padding: 20px 0 15px 0;     /* 상 우 하 좌 / 20 0 40 : 상 좌우 하 */
+        }
+        .input_wrap{
+            display: flex;
+            width: 100%;    /* =460px */
+            height: 50px;
+            margin-top: 10px;
+        }
+        .input_wrap > .icon_box {
+            width: 50px;
+            height: 100%;    /* =50px */
+            background-color: rgb(240, 240, 240);
+            border: 1px solid lightgray;
+            text-align: center;
+            line-height: 50px;
+            color: lightgray;
+            font-size: 20px;
+        }
+        .input_wrap > .input_box {
+            width: 410px;
+            height: 50px;
+            padding: 0 20px;
+            border-width: 1px 1px 1px 0;
+            border-style: solid;
+            border-color:  lightgray;
+            line-height: 50px;
+            position: relative;
+        }
+        .input_box__input {
+            width: 100%;
+            border: none;
+            outline: none;
+            /* font-size: 16px; */
+        }
+        .overlap_label {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            color: lightgray;
+            cursor: text;
+        }
+        .input_box:hover > .overlap_label {
+            display: none;
+        }
+
+        aside {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid silver;
+        }
+        #check_all+label{
+            font-weight: 900;
+        }
+        .check_items {
+            list-style-type: none;
+            border: 1px solid lightgray;
+            padding: 10px 10px 0 10px;
+            margin-top: 10px;
+        }
+        .check_wrap {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .checkbox_box {
+            width: 400px;
+            height: 20px;
+        }
+        .arrow_box {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+        }
+
+        footer {
+            padding-top: 20px;
+        }
+        .join_btn {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-weight: 900;
+            color: white;
+            background-color: rgb(0, 116, 233);
+            box-shadow: 0 2px 0 navy;
+            border: 0 none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .footer_text {
+            width: 100%;
+            padding: 50px 0;
+            font-size: 10px;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <h1 class="logo"> <!-- 이미지 줄이기를 여기서 하는 방법으로 생각 -->
+                <a href="https://www.coupang.com/">
+                    <img src="https://static.coupangcdn.com/image/static/login/logo-coupang.x2.20201201.png">
+                </a> 
+            </h1>
+        </header>
+        <section>
+            <div class="section_title">회원정보를 입력해주세요</div>
+            <div class="input_wrap">
+                <div class="icon_box">
+                    <i class="far fa-envelope"></i>
+                </div>
+                <div class="input_box">
+                    <input type="text" name="email" class="input_box__input"> <!-- 클릭했을 때 사라지는 것은 place holder가 아님 -->
+                    <label class="overlap_label">아이디(이메일)</label>
+                </div>
+            </div>
+            <div class="input_wrap">
+                <div class="icon_box">
+                    <i class="fas fa-unlock-alt"></i>
+                </div>
+                <div class="input_box">
+                    <input type="password" name="pw" class="input_box__input"> <!-- 클릭했을 때 사라지는 것은 place holder가 아님 -->
+                    <label class="overlap_label">비밀번호</label>
+                </div>
+            </div>
+            <div class="input_wrap">
+                <div class="icon_box">
+                    <i class="fas fa-unlock"></i>
+                </div>
+                <div class="input_box">
+                    <input type="password" name="pw2" class="input_box__input"> <!-- 클릭했을 때 사라지는 것은 place holder가 아님 -->
+                    <label class="overlap_label">비밀번호 확인</label>
+                </div>
+            </div>
+            <div class="input_wrap">
+                <div class="icon_box">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="input_box">
+                    <input type="text" name="name" class="input_box__input"> <!-- 클릭했을 때 사라지는 것은 place holder가 아님 -->
+                    <label class="overlap_label">이름</label>
+                </div>
+            </div>
+            <div class="input_wrap">
+                <div class="icon_box">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="input_box">
+                    <input type="text" name="phone" class="input_box__input"> <!-- 클릭했을 때 사라지는 것은 place holder가 아님 -->
+                    <label class="overlap_label">휴대폰 번호</label>
+                </div>
+            </div>
+        </section>
+        <aside>
+            <div class="section_title">쿠팡 서비스약관에 동의해주세요</div>
+            <div>
+                <input id="check_all" type="checkbox" name="checkall">
+                <label for="check_all">모두 동의합니다.</label>
+            </div>
+            <ul class="check_items" >
+                <li class="check_wrap">
+                    <div class="checkbox_box" >
+                        <input id="agree1" type="checkbox">
+                        <label for="agree1">[필수] 만 14세 이상입니다</label>
+                    </div>
+                </li>
+                <li class="check_wrap">
+                    <div class="checkbox_box" >
+                        <input id="agree2" type="checkbox">
+                        <label for="agree2">[필수] 쿠팡 이용약관 동의</label>
+                    </div>
+                    <div class="arrow_box" >
+
+                    </div>
+                </li>
+                <li class="check_wrap">
+                    <div class="checkbox_box" >
+                        <input id="agree3" type="checkbox">
+                        <label for="agree3">[필수] 전자금융거래 이용약관 동의</label>
+                    </div>
+                    <div class="arrow_box" >
+
+                    </div>
+                </li>
+                <li class="check_wrap">
+                    <div class="checkbox_box" >
+                        <input id="agree4" type="checkbox">
+                        <label for="agree4">[필수] 개인정보 수집 및 이용 동의</label>
+                    </div>
+                    <div class="arrow_box" >
+
+                    </div>
+                </li>
+                <li class="check_wrap">
+                    <div class="checkbox_box" >
+                        <input id="agree5" type="checkbox">
+                        <label for="agree5">[필수] 개인정보 제공 동의</label>
+                    </div>
+                    <div class="arrow_box" >
+
+                    </div>
+                </li>
+            </ul>
+        </aside>
+        <footer>
+            <button class="join_btn">동의하고 가입하기</button>
+            <div class="footer_text">ⓒCoupang Corp. All rights reserved.</div>
+        </footer>
+    </div>
+</body>
+</html>

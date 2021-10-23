@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+            font-size: 14px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        ul, ol{
+            list-style-type: none;
+        }
+        input, button {
+            border: 0 none;
+            outline: 0 none;
+            cursor: pointer;
+        }
+        .wrap {
+            height: 100%;
+        }
+        .header {
+            padding-bottom: 69px;
+        }
+        .header > .header_inner {
+            position: relative;
+            padding-top: 111px;
+            width: 743px;
+            height: 163px;
+            margin: 0 auto;
+
+        }
+        .header .logo {
+            display: block;
+            margin: 0 auto;
+            width: 244px;
+            height: 49px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_00_common_c860f0da.png);
+            background-size: 244px 94px;
+        }
+        .blind {
+            visibility: hidden;
+            /* width: 1px;
+            height: 1px;
+            overflow: hidden; 왜 visibility:hidden은 안쓰는가 -> 해도 됨 : ++판독기 인식이 안 될 때가 있어서 ..안 씀  */
+        }
+        .header .lang {
+            position: absolute;
+            top: 20px;
+            right: 0px;
+        }
+        .login_wrap {
+            width: 553px;
+            margin: 0 auto;
+        }
+        .menu_wrap {
+            display: table;
+            table-layout: fixed;
+            border-collapse: collapse;
+            width: 100%;
+            z-index: 10;
+        }
+        .menu_item {
+            display: table-cell;
+            vertical-align: top;
+        }
+        .menu_id, .menu_ones, .menu_qr {
+            display: block;
+            width: 100%;
+            height: 69px;
+            padding-top: 20px;
+            text-align: center;
+            border: 1px solid #e3e3e3;
+            border-bottom: 0 none;
+            position: relative;
+        }
+        .menu_ones, .menu_qr {
+            background-color: #f8f9fa;
+        }
+        .menu_id {
+            border-radius: 5px 0 0 0;
+        }
+        .menu_ones {
+            border-width: 1px 0;
+        }
+        .menu_qr {
+            border-radius: 0 5px 0 0;
+        }
+        .menu_id > .menu_text::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+            background-size: 229px 196px;
+            background-position: left -26px top -172px;
+            position: absolute;
+            top: 18px;
+            left: 35px;
+        } 
+        .menu_ones > .menu_text::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+            background-size: 229px 196px;
+            background-position: left -78px top -172px;
+            position: absolute;
+            top: 18px;
+            left: 31px;
+        } 
+        .menu_qr > .menu_text::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+            background-size: 229px 196px;
+            background-position: left -180px top -78px;
+            position: absolute;
+            top: 18px;
+            left: 41px;
+        }
+        .panel_wrap{
+            margin-top: -8px;
+            position: relative;
+        }
+        .panel_item {
+            border: 1px solid #c6c6c6;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .panel_inner {
+            padding: 24px;
+        }
+        .input_row {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #dadada;
+            padding: 17px 18px 17px 19px;
+        }
+        .input_row:first-of-type {
+            border-bottom: 0;
+        }
+        .input_row:last-of-type {
+            border-radius: 0 0 5px 5px;
+        }
+        .icon_cell {
+            display: table-cell;
+            width: 26px;
+            vertical-align: middle;
+        }
+        .icon_id {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+            background-size: 229px 196px;
+            background-position: -206px -141px;
+        }
+        .input_text {
+            display: table-cell;
+            color: #c6c6c6;
+            width: 100%;
+            font-size: 18px;
+
+        }
+        .icon_pw {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+            background-size: 229px 196px;
+            background-position: -206px -97px;
+        }
+        .login_keep_wrap {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn_login_wrap {
+            margin-top: 30px;
+        }
+        .btn_login{
+            width: 100%;
+            padding: 17px 0 15px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+            background-color: #03c75a;
+        }
+        .btn_text{
+            color: white;
+            font-size: 22px;
+            font-weight: 900;            
+        }
+        .find_wrap, .footer_link {
+            padding: 24px 0 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        .find_wrap > li:nth-of-type(2)::before, .find_wrap > li:nth-of-type(3)::before {  /* .find_wrap > li+li ==> 앞에 li가 있는 li */
+            content: '|';
+            display: inline-block;
+            width: 40px;
+        }
+        .banner_wrap {
+            width: 553px;
+            margin: 0 auto;
+        }
+        .banner_inner {
+            display: block;
+        }
+        .banner_img {
+            border: 1px solid #dadada;
+            border-radius: 5px;
+        }
+        .footer {
+            padding: 80px 0 32px;
+        }
+        .footer_link > li+li::before {
+            content: '|';
+            display: inline-block;
+            width: 40px;
+        }
+        .footer_link {
+            padding: 0;
+        }
+        .footer_copy {
+            width: 553px;
+            margin: 10px auto 0;
+            text-align: center;
+        }
+        .footer_logo {
+            display: inline-block;
+            background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_00_common_c860f0da.png);
+            /* 본 이미지 크기 */
+            background-size: 244px 94px;
+            /* 이미지에서 footer-logo의 위치 찾기 */ 
+            background-position: 0 -51px;
+            /* 보여줄 이미지 크기 */
+            width: 70px;
+            height: 15px;
+            /* background-repeat: no-repeat; */
+        }
+
+        .text {
+            color: #888;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <div class="header_inner">
+                <a href="https:www.naver.com" class="logo">
+                    <h1 class="blind">NAVER</h1> <!-- blind의 이유는 웹 표준을 지키기 위함 임 -->
+                </a>
+                <div class="lang">
+                    <select name="local_switch">
+                        <option value="ko_KR">한국어</option>
+                        <option value="en_US">English</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        <div class="login_wrap">
+            <ul class="menu_wrap">
+                <li class="menu_item">
+                    <a href="#" class="menu_id">
+                        <span class="menu_text">
+                            <span class="text">ID 로그인</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="menu_item">
+                    <a href="#" class="menu_ones">
+                        <span class="menu_text">
+                            <span class="text">일회용 번호</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="menu_item">
+                    <a href="#" class="menu_qr">
+                        <span class="menu_text">
+                            <span class="text">QR 코드</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <form action="#" method="POST">
+                <ul class="paner_wrap">
+                    <li class="panel_item">
+                        <div class="panel_inner">
+                            <div class="id_pw_wrap">
+                                <div class="input_row">
+                                    <div class="icon_cell">
+                                        <span class="icon_id">
+                                            <span style="display: none;">아이디</span>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="id" placeholder="아이디" class="input_text">
+                                </div>
+                                <div class="input_row">
+                                    <div class="icon_cell">
+                                        <span class="icon_pw">
+                                            <span style="display: none;">비밀번호</span>
+                                        </span>
+                                    </div>
+                                    <input type="password" name="pw" placeholder="비밀번호" class="input_text">
+                                </div>
+
+                            </div>
+                            <div class="login_keep_wrap">
+                                <div class="keep_check">
+                                    <input id="keep" type="checkbox" name="nvlong">
+                                    <label for="keep">로그인 상태 유지</label>
+                                </div>
+                                <div class="ip_check">
+                                    <a href="#" target="_blank">
+                                        <span class="ip_text">IP보안</span>
+                                    </a>
+                                    <span class="switch">
+                                        <input id="switch" type="checkbox">
+                                        <label for="switch">
+                                            <span class="blind">on</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="btn_login_wrap">
+                                <button type="submit" class="btn_login">
+                                    <span class="btn_text">로그인</span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+         <ul class="find_wrap">
+             <li><a href="#" target="_blank" class="find_text">비밀번호 찾기</a></li>
+             <li><a href="#" target="_blank" class="find_text">아이디 찾기</a></li>
+             <li><a href="#" target="_blank" class="find_text">회원가입</a></li>
+         </ul>
+         <div class="banner_wrap">
+             <a class="banner_inner" href="#" target="_blank">
+                 <img class="banner_img" width="100%" height="100%" src="https://ssl.pstatic.net/static/nid/login/banner/m_banner_2step_924x294.png">
+             </a>
+         </div>
+    </div>
+    <div class="footer">
+         <div class="footer_inner">
+            <ul class="footer_link">
+                <li><a href="#" target="_blank" class="footer_item">이용약관</a> </li>
+                <li><a href="#" target="_blank" class="footer_item">개인정보처리방침</a> </li>
+                <li><a href="#" target="_blank" class="footer_item">책임의 한계와 법적고지</a> </li>
+                <li><a href="#" target="_blank" class="footer_item">회원정보 고객센터</a> </li>
+            </ul>
+         </div>
+         <div class="footer_copy">
+             <a href="#" target="_blank">
+                 <span class="footer_logo">
+                     <span class="blind">네이버</span>
+                 </span>
+             </a>
+             <span class="text">Copyright</span>
+             <span class="corp">&copy; NAVER Corp.</span>
+             <span class="text">All Rights Reserved.</span>
+         </div>
+    </div>
+</body>
+</html>

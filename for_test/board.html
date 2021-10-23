@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <style>
+        .r_f_all {
+            background-color: rgb(241, 247, 253);
+        }
+        h2 {
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+        }
+        .tb_r > table{
+            border: 2px solid gray;  
+            border-left: none;
+            border-right: none;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 0 auto;
+        }
+        thead > tr {
+            background-color: #DDDD;
+        }
+        thead > tr, tbody > tr {
+            border-bottom: 1px solid rgb(182, 172, 172);
+            width: 30px;
+            height: 30px;
+        }
+
+        .w_btn {
+            text-align: center;
+            padding: 20px;
+            height: 50px;
+        }
+        .btn > a {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            color: white;
+            background-color: navy;
+            border-radius: 4px;
+            margin: 10px;
+            text-decoration: none;       
+            line-height: 50px;
+        }
+        table > tbody > tr:hover{
+            background-color: wheat;
+        }
+        .btn a:hover{
+            text-decoration: underline;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="r_f_all">
+        <h2>자유게시판</h2>
+        <div class="tb_r">
+            <table>
+                <thead>
+                    <tr class="title">
+                        <td class="b_no">순번</td>
+                        <td class="b_title">제목</td>
+                        <td class="b_writer">작성자</td>
+                        <td class="b_date">작성일</td>
+                        <td class="b_hit">조회수</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>이용후기</td>
+                        <td>존윅</td>
+                        <td>2021-04-22</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>게시판이용문의</td>
+                        <td>제임스</td>
+                        <td>2021-04-22</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>가입인사</td>
+                        <td>새내기</td>
+                        <td>2021-04-21</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>[필독]게시판이용안내</td>
+                        <td>매니저</td>
+                        <td>2021-04-21</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>[긴급]공지사항</td>
+                        <td>관리자</td>
+                        <td>2021-04-20</td>
+                        <td>82</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form >
+            <div class="w_btn">
+                <span class="btn">
+                    <a href="login.html">로그아웃</a>                
+                </span>
+                <span class="btn">
+                    <a href="personal_info.html">개인정보수정</a>
+                </span>
+            </div>
+            
+    </div>
+        </form>
+    </body>
+    </html>

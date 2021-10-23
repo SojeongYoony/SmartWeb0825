@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문제.
+        // 시급 9160원
+        // 8시간 근무까지는 시급 그대로,
+        // 8시간 초과 근무시간은 시급 * 1.5
+        // 10시간 근무하면 일급은?
+
+        const pay =9160;
+        const hour = 8;
+        let extra_hour =2;
+        let day = ((hour+extra_hour)<=8) ? pay*hour : (pay*hour) + (extra_hour*pay*1.5);
+        console.log('추가 근무 시간 : ' + extra_hour + '\n' + '초과 급여 적용 일당 : ' + day);
+    </script>
+
+<hr>
+ 
+
+    <!-- 연습1. 다음(DAUM) 로고를 클릭하면 다음 홈페이지로 이동할 수 있는 링크를 만드시오.-->
+    <a id="daum_link"></a>
+    <script>
+        let daum_Link = document.getElementById('daum_link');   // 구성요소 daum_link를 가져와 daum_Link에 저장
+        daum_Link.setAttribute('href', 'https://www.daum.net'); // 속성을 daum_Link에 저장
+        daum_Link.innerHTML = '<img src ="../images/daum.png" width ="50px">'; //HTML안에 박아버림
+        </script>
+
+<hr>
+
+<!-- 연습 2. 네이버(NAVER) 로고를 클릭하면 다음 홈페이지로 이동할 수 있는 링크를 만드시오.
+    <div id="box2">
+        <a href="https://www.naver.com"> <img src="../images/naver.png" width="50px">;</a>  -->
+    </div>
+    
+    <script>
+        let image = document.createElement('img'); // <img>요소 만들기
+        image.setAttribute('src','../images/naver.png'); // <img src="../images/naver.png">
+        let naverLink = document.createElement('a'); // <a>요소 만들기
+            naverLink.setAttribute('href', 'https://www.naver.com'); //<a href="https://www.naver.com">
+                
+                naverLink.appendChild(image); // naverLink는 image의 자식이다 : <a><img></a>
+                document.getElementById('box2').appendChild(naverLink); //box2 id 요소로 dom 가져옴(div).appendChild : naverLink(<a>) 집어넣음
+                    
+                    </script>
+
+<hr>
+
+<div id="box3">
+    <!-- <ul><li></li><li></li><li></li><ul> -->
+    </div>
+    <script>
+        let unorderedlist = document.createElement('ul'); // <ul>
+            let list1 = document.createElement('li');        // <li>
+                let list2 = document.createElement('li');
+                let list3 = document.createElement('li');
+                unorderedlist.appendChild(list1);
+                unorderedlist.appendChild(list2);
+                unorderedlist.appendChild(list3);
+                document.getElementById('box3').appendChild(unorderedlist); 
+                unorderedlist.style.listStyleType='none';
+                console.log(unorderedlist);
+                </script>
+  
+  <!-- 연습 2. 네이버(NAVER) 로고를 클릭하면 다음 홈페이지로 이동할 수 있는 링크를 만드시오.-->
+  <div id="box2">
+      <!-- <a href="https://www.naver.com"> <img src="../images/naver.png" width="50px">;</a>  -->
+    </div>
+    <script>
+        let image2 = document.createElement('img'); // <img>
+        let link = document.createElement('a');     // <a></a>
+        image2.setAttribute('src', '../images/naver.png');
+        link.setAttribute('href', 'https://www.naver.com');
+        // 넣기
+        link.appendChild(image);
+        document.getElementById('box2').appendChild(link);
+        
+        </script> 
+
+
+</body>
+</html>

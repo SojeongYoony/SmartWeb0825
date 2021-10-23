@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>personal_info</title>
+    <style>
+        form > fieldset{
+            background-color: rgb(241, 247, 253); 
+            border: none;
+        }
+        table td{
+            padding: 5px; 
+            text-align: left; 
+            vertical-align: middle; 
+            border: 1px solid gray;
+        }
+        table{
+            border-collapse: collapse; 
+            padding: 5px; 
+            margin: 10px auto;
+            background-color: white;
+        }
+        thead td{
+            text-align: center; 
+            background-color: navy; 
+            color: oldlace;
+        }
+        h1 {
+            text-align: center;
+        }
+        .id_no > input{
+            width: 96px; 
+            height: 20px;
+        }
+        .id_no > :nth-of-type(3){
+            width: 35px; 
+            height: 25px; 
+            text-align: center; 
+            padding: 0;
+        }
+        .bday > input {
+            width: 45px; 
+            height: 20px;
+        }
+        .sub_btn{
+            text-align: center;
+        }
+        .sub_btn > a > input  {
+            width: 100px; 
+            height: 40px;
+            margin: 10px;
+            font-size: 16px;
+            color: oldlace;
+            background-color: navy; 
+            border-style: none; 
+            border-radius: 4px;
+        }
+        .sub_btn > a > input:hover {
+            text-decoration-line: underline;
+        }
+    </style>
+</head>
+<body>
+    <form action="board.html">
+        <fieldset>
+
+            <h1>개인정보입력 폼</h1>
+            <table>
+                <thead>
+                <tr>
+                    <td colspan="2">개인정보</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="infolist">주민등록번호</td>
+                    <td class="id_no"><input type="number"> - <input type="number">
+                        <input type="button"value="검증">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infolist">생일</td>
+                    <td class="bday"><input type="number">년<input type="number">월<input type="number">일</td>
+                </tr>
+                <tr>
+                    <td class="infolist">성별</td>
+                    <td class="gender">
+                        <label for="male"><input id="male" type="radio">남자</label>
+                        <label for="female"><input id="female" type="radio">여자</label> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="hobbies">관심분야</td>
+                    <td>
+                        <label for="hobby1"><input id="hobby1" type="checkbox">여행</label>
+                        <label for="hobby2"><input id="hobby2" type="checkbox">독서</label>
+                        <label for="hobby3"><input id="hobby3" type="checkbox">음악</label>
+                        <label for="hobby4"><input id="hobby4" type="checkbox">음악</label>
+                        <label for="hobby5"><input id="hobby5" type="checkbox">관심없음</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infolist">자기소개</td>
+                    <td><textarea rows="10" cols="40" name="a"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sub_btn">
+            <a href="board.html"><input type="submit" value="수정완료"></a>
+        </div>
+    </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 560px;
+            height: 450px;
+            color: black;
+            border-collapse: collapse;
+        }
+        td{
+            border : 1px solid silver;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        tbody td {
+            padding: 2px 2px;
+            text-align: left;
+            vertical-align: top;
+        }
+        thead > tr > td {
+            text-align: center;
+        }
+        thead td:nth-of-type(1), tbody td:nth-of-type(1) {
+            color: red;
+        }
+
+        .s_w > td:nth-of-type(2), .s_w > :last-of-type{
+            color: red;
+        }
+        .t_w > td:nth-of-type(2){
+            color: red;
+        }
+        .prev {
+            color: silver!important;
+        }
+        .next {
+            color: silver!important;
+        }
+        .calendar > tbody td:hover {
+            background-color: wheat;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <table class="calendar">
+        <thead>
+            <tr>
+                <td class="sunday">일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="f_w">
+                <td class="prev">26</td>
+                <td class="prev">27</td>
+                <td class="prev">28</td>
+                <td class="prev">29</td>
+                <td class="prev">30</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr class="s_w">
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr class="t_w">
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td class="next">1</td>
+                <td class="next">2</td>
+                <td class="next">3</td>
+                <td class="next">4</td>
+                <td class="next">5</td>
+                <td class="next">6</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

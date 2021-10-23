@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 연습 2. 네이버(NAVER) 로고를 클릭하면 다음 홈페이지로 이동할 수 있는 링크를 만드시오.-->
+  <div id="box2">
+    <!-- <a href="https://www.naver.com"> <img src="../images/naver.png" width="50px">;</a>  -->
+  </div>
+  <script>
+      let image = document.createElement('img');
+      let naverlink = document.createElement('a');
+      image.setAttribute('src', '../images/naver.png');
+      naverlink.setAttribute('href','https://www.naver.com');
+      naverlink.appendChild(image);
+      document.getElementById('box2').appendChild(naverlink);
+  </script>
+    
+</body>
+</html>

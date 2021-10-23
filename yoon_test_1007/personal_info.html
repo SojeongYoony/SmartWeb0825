@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>personal_info</title>
+    <style>
+        *{margin: 0; }
+        form{
+            background-color: rgb(240, 248, 255);
+            border: none;
+            width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+        table{
+            width: 500px;
+            border-collapse: collapse; 
+            margin: 0 auto;
+            background-color: white;
+        }
+        thead {
+            text-align: center; 
+            background-color: navy; 
+            color: white;
+            padding: 10px 0;
+        }
+        td{ 
+            padding: 5px 5px 5px 10px; 
+            border: 1px solid gray;
+            height: 26px;
+        }
+        .id_no{
+            width: 90px; 
+            height: 20px;
+        }
+        .bday > input { 
+            width: 45px; 
+            height: 20px;
+        }
+        .hobby input, .hobby label, .gender input, .gender label {
+            cursor: pointer;
+        }
+        .hobby label, .gender label {
+            margin-right: 7px;
+        }
+        input[type=text], textarea{
+            border: 1px solid gray;
+            padding: 2px 7px;
+            outline: none;
+        }
+        .sub_btn {
+            text-align: center;
+        }
+        .sub_btn span {
+            display: inline-block;
+            width: 100px; 
+            margin: 30px;
+            height: 50px;
+            font-size: 16px;
+            color: white;
+            background-color: navy; 
+            border-style: none; 
+            border-radius: 3px;
+        }
+        .sub_btn a {
+            line-height: 50px;
+        }
+        .sub_btn span:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="POST">
+            <h1>개인정보입력 폼</h1>
+            <table>
+                <thead>
+                <tr>
+                    <td colspan="2">개인정보</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>주민등록번호</td>
+                    <td>
+                        <input class="id_no" name="id_no1" type="text" maxlength="6"> - <input class="id_no" name="id_no2" type="text" maxlength="7">
+                        <input type="button"value="검증">
+                    </td>
+                </tr>
+                <tr>
+                    <td>생일</td>
+                    <td class="bday">
+                        <input type="text" name="bday_yy" maxlength="4">년
+                        <input type="text" name="bday_mm" maxlength="2">월
+                        <input type="text" name="bday_dd" maxlength="2">일
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td class="gender">
+                        <input id="M" type="radio" name="gender" value="남자">
+                        <label for="M">남자</label>
+                        <input id="W" type="radio" name="gender" value="여자">
+                        <label for="W">여자</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>관심분야</td>
+                    <td class="hobby"><input id="hobby1" type="checkbox" name="hobbies" value="여행">
+                        <label for="hobby1">여행</label>
+                        <input id="hobby2" type="checkbox" name="hobbies" value="영화">
+                        <label for="hobby2">영화</label>
+                        <input id="hobby3" type="checkbox" name="hobbies" value="독서">
+                        <label for="hobby3">독서</label>
+                        <input id="hobby4" type="checkbox" name="hobbies" value="음악">
+                        <label for="hobby4">음악</label>
+                        <input id="none" type="checkbox" name="hobbies" value="관심없음">
+                        <label for="none">관심없음</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infolist">자기소개</td>
+                    <td><textarea rows="10" cols="40" name="info"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sub_btn">
+            <a href="board.html" ><span>수정완료</span></a>  <!-- submit.. -->
+        </div>
+    </form>
+</body>
+</html>

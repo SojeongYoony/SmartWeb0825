@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>10_FORM</title>
+    </head>
+    <body>
+        <!-- 
+            1. <form></form>
+                1) action 속성 : form에 입력된 모든 정보를 보내는 경로
+                                 action 경로로 정보로 보내기 위해서는 submit이 필요
+                2) method 속성 : form에 입력된 모든 정보를 보내는 방법
+                    (1) get 방식 
+                        - 디폴트
+                        - 보내는 정보가 헤더(header)에 포함
+                        - 보내는 정보가 URL에 노출 (보안 취약)
+                        - 빠름
+                        - 용도 : 검색
+                    (2) post 방식
+                        - 보내는 정보가 바디(body)에 포함
+                        - 보내는 정보가 노출 되지 않음 (보안 유지)
+                        - 느림
+                        - 용도 : 로그인, 회원가입 등
+                3) enctype 속성 
+                    (1) 파일 첨부에서 사용
+                    (2) 파일 첨부하는 form
+                        <form enctype="multipart/form-data" method="post">
+            2. name 속성
+                1) <form> 태그나 <form> 태그의 하위 태그에서 사용
+                2) 보낸 정보를 받는 쪽(서버 측)에서 name 속성으로 식별
+            3. value 속성
+                1) 보내는 정보, 보내는 실제 데이터
+                2) value 속성 값을 작성해서 보내면 사용자 입력을 대체
+                3) 사용자가 입력한 값이 value 속성으로 등록
+         -->
+         <h1>&lt;input&gt; 태그</h1>
+         <form action="01_overview.html">
+             <input type="text" name="a" placeholder="일반 텍스트 용"><br>
+             <input type="password" name="b" placeholder="비밀번호"><br>
+             <input type="number" name="c" placeholder="숫자 용"><br> 
+             <input type="hidden" name="d" value="숨겨서 보내는 값"><br>
+             <button type="submit">SUBMIT</button>
+         </form>
+
+         <h1>선택 태그</h1>
+         <form>
+             <input type="checkbox" name="a" value="game" id="id_game">
+             <label for="id_game">게임</label>
+             &nbsp;&nbsp;&nbsp;
+             <input type="checkbox" name="a" value="movie" id="id_movie">
+             <label for="id_movie">영화</label>
+             <br>
+             <label><input type="radio" name="b" value="male"> 남자</label> 
+             &nbsp;&nbsp;&nbsp;
+             <label><input type="radio" name="b" value="female">여자</label>
+             &nbsp;&nbsp;&nbsp;
+             <label><input type="radio" name="b" value="none" checked="checked">선택 안 함</label>
+         </form>
+
+         <h1>목록 태그</h1>
+         <form>
+             <!-- 하나만 선택 -->
+             <select name="a">
+                 <option value="02">02</option>
+                 <option value="031">031</option>
+                 <option value="032">032</option>
+             </select>
+             <br>
+             <!-- 여러 개 선택 : 그다지 중요하진 않음 -->
+             <select name="b" multiple>
+                 <option value="1">서울</option>
+                 <option value="2">경기</option>
+                 <option value="3">인천</option>
+             </select>
+             <br>
+             <!-- 선택(datalist) + 입력(input) : 콤보 -->
+             <input list="domains" type="text" name="domain" placeholder="도메인 입력 및 선택">
+             <datalist id="domains">
+                 <option value="gmail.com"/>
+                 <option value="kakao.com"/>
+                 <option value="naver.com"/>
+             </datalist>
+         </form>
+
+         <h1>단추</h1>
+         <form action="01_overview.html">
+             <!-- 서브밋 -->
+             <button type="submit">전송</button>
+             <br>
+             <button>전송</button>
+             <br>
+             <input type="submit" value="전송">
+             <br>
+             <!-- 취소 -->
+             <input type="text">
+             <input type="reset" value="취소">
+             <br>
+             <!-- 그냥 버튼 : 자바스크립트 실행을 위해서 -->
+             <input type = "button" value="일반" onclick="alert('눌렀어?')">
+        </form>
+
+        <h1>파일 첨부</h1>
+        <form mehtod="post" enctype="multipart/form-data">
+            <input type="file" name="filename">
+        </form>
+
+        <h1>기타</h1>
+        <form>
+            <fieldset>
+                <legend>성별</legend>
+                <label><input type="radio" name="gender" value="m">남자</label>
+                <label><input type="radio" name="gender" value="f">여자</label>
+            </fieldset>
+            <textarea rows="5" cols="40" name="a"></textarea>
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- jquery 사용을 위해 아래 과정 중 한 가지를 작업함. -->
+
+    <!-- 다운로드 받은 jquery 라이브러리 -->
+    <script src="../js/jquery-3.6.0.js"></script>
+
+    <!-- 2. CDN jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        /*
+            jquery DOM 요소 선택
+            1. CSS 선택자를 사용한다
+            2. jquery wrapper를 이용해서 CSS 선택자를 작성한다.
+               jquery wrapper : $()
+            3. jQuery는 $를 의미한다.
+            4. 예
+                1) <div id="wrap"></div>
+                    $('#wrap') == document.getElementById('wrap');
+                2) <div class="container"></div>
+                    $('.container') == document.getElementsByClassName('container');
+                3) <div></div>
+                    $('div') == document.getElementsByTagName('div');
+        */
+    </script>
+    <style>
+        .red   { color: red;   }
+        .green { color: green; }
+        .blue  { color: blue;  }
+    </style>
+</head>
+<body>
+    
+    <div id ="box1">안녕하세요</div>
+    <script>
+        // textContent == text()
+        console.log(document.getElementById('box1').textContent); 
+        console.log( $('#box1').text() );
+    </script>
+
+    <div id="box2"></div>
+    <script>
+        // textContent = '텍스트'
+        // text('텍스트')
+        document.getElementById('box2').textContent = '반갑습니다.';
+        $('#box2').text('반갑습니다.')    
+    </script>
+
+
+    <div id="box3">
+        <h1>만나서 반갑습니다</h1>
+    </div>
+    <script>
+        console.log(document.getElementById('box3').innerHTML);
+        console.log($('#box3').html());
+        </script>
+
+    <div id="box4"></div>
+    <script>
+        // innerHTML = 'HTML구성요소'
+        // html('HTML구성요소')
+        document.getElementById('box4').innerHTML='<h1>잘 지내시죠?</h1>';
+        $('#box4').html('<h1>잘 지내시죠?</h1>');
+    </script>
+
+    <ul>
+        <li class="items">TV</li>
+        <li class="items">냉장고</li>
+        <li class="items">세탁기</li>
+        <li class="items">건조기</li>
+        <li class="items">식기세척기</li>
+    </ul>
+    <script>
+        console.log($('.items'));               // 배열이 반환됨.
+        console.log($('.items').length);        // 길이.
+        console.log($('.items')[0]);            // 인덱스 0인 요소. 첫 번째 요소.
+        console.log($($('.items')[0]).text());  // 첫 번째 요소의 text
+        // 일반 for문
+        for (let i = 0; i< $('.items').length; i++) {
+            console.log((i+1)+ '번째 요소: '+ $($('.items')[i]).text());
+        }
+        // $.each(배열, 함수)
+        // 배열의 각 요소를 함수로 모두 돌림.
+        // $.each(배열, function(인덱스, 요소){});
+        // $(요소).each(배열, function(인덱스, 요소){});
+        $.each($('.items'), function(i, item){
+            console.log('인덱스: ' + i + '요소: ' + $(item).text());
+        });
+    </script>
+
+    <ul>
+        <li><a href="#">NAVER</a></li>
+        <li><a href="#">GOOGLE</a></li>
+        <li id="kakao"><a href="#">KAKAO</a></li>
+        <li><a href="#">HRD</a></li>
+        <li><a href="#">NATE</a></li>
+    </ul>
+    <script>
+        // parent()    : 부모
+        // children () : 자식
+        // prev()      : 이전 형제
+        // next()      : 다음 형제
+        // siblings()  : 모든 형제
+        console.log( $('#kakao').parent() );     // 부모
+        console.log( $('#kakao').parents() );    // 모든 부모
+        console.log( $('#kakao').closest('ul') );// 부모 중 가장 가까운 ul
+        console.log( $('#kakao').children() );   // 자식
+        console.log( $('#kakao').find('a') );    // 자식 중 a
+        console.log( $('#kakao').prev() );       // 바로 이전 형제
+        console.log( $('#kakao').prevAll() );    // 모든 이전 형제
+        console.log( $('#kakao').next() );       // 바로 다음 형제
+        console.log( $('#kakao').nextAll() );    // 모든 다음 형제
+        console.log( $('#kakao').siblings() );   // 모든 형제
+    </script>
+
+    <ol>
+        <li>터미네이터</li>
+        <li>에일리언</li>
+        <li>부산행</li>
+        <li>노팅힐</li>
+        <li><a href="#">기생충</a></li>
+    </ol>
+    <script>
+        console.log( $('ol li:first').text());   // 첫 번째 li
+        console.log( $('ol li:last').text());    // 마지막 li
+        console.log( $('ol li:eq(2)').text());   // 인덱스 2인 li
+        console.log( $('ol li:lt(2)'));          // 인덱스 2보다 작은 인덱스 요소 (lt : less than)
+        console.log( $('ol li:gt(2)').text());          // 인덱스 2보다 큰 인덱스 요소 (gt : greater than)
+        console.log( $('ol li:odd').text());            // 인덱스가 홀수인 요소들
+        console.log( $('ol li:even').text());           // 인덱스가 짝수인 요소들
+    </script>
+
+    <form>
+        <input type="text" value="안녕하세요">
+        <input type="password">
+        <input type="checkbox" id="chk1"><label for="chk1">필수동의</label>
+        <input type="checkbox" id="chk2"><label for="chk2">선택동의</label>
+        <input type="radio" id="radio1"><label for="radio1">매장주문</label>
+        <input type="radio" id="radio2"><label for="radio2">포장주문</label>
+        <select>
+            <option>봄</option>
+            <option>여름</option>
+            <option>가을</option>
+            <option>겨울</option>
+        </select>
+    </form>
+    <script>
+        /*
+            $(':text')             - type="text"
+            $(':text').val()       - type="text"에 입력된 값
+            $(':text').val(값)     - type="text"에 값 입력하기
+            $(':checkbox:checked') - type="checkbox" 중 체크된 요소
+            $(':radio:checked')    - type="radio" 중 체크된 요소
+            $(':selected')         - <option> 중 체크된 요소
+        */
+        console.log( $(':text') );                     // type="text"인 요소들
+        console.log( $('input[type=text]') );          // type="text"인 요소들
+
+        console.log( $(':text').val() );               // type="text"인 요소에 입력된 값(value="값")
+
+        console.log( $(':password') );                 // type="password"인 요소들
+        console.log( $('input[type=password]') );      // type="password"인 요소들
+
+        console.log( $(':checkbox') );                 // type="checkbox"인 요소들
+        console.log( $('input[type=checkbox]') );      // type="checkbox"인 요소들
+
+        console.log( $(':radio') );                    // type="radio"인 요소들
+        console.log( $('input[type=radio]') );         // type="radio"인 요소들
+
+        console.log( $(':checked') );                  // checkbox 또는 radio 중 체크된 요소들
+
+        console.log( $(':checkbox:checked') );              // checkbox 중 check된 요소들
+        console.log( $('input[type=checkbox]:checked') );   // checkbox 중 check된 요소들
+        console.log( $('input[type=radio]:checked') );      // radio 중 체크된 요소들
+        console.log( $(':selected') );      // <option> 중 선택된 요소들
+        console.log( $(':focus') );         // 포커스를 가진 요소
+    </script>
+    <!-- ---------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------- -->
+    <ul id="menu">
+        <li>된장찌개</li>
+    </ul>
+    <script>
+        // 1. 요소추가  (부모-자식)
+        $('#menu').append('<li>김치찌개</li>');     // 마지막 요소로 추가
+        $('#menu').prepend('<li>우렁쌈밥</li>');    // 첫번째 요소로 추가
+        $('<li>제육볶음</li>').appendTo('#menu');   // 마지막 요소로 추가
+        $('<li>돈까스</li>').prependTo('#menu');    // 첫번째 요소로 추가
+
+        // 주의. html은 기존 요소를 지우고 새로 넣음.
+        // $('#menu').html('<li>돼지불백</li>');   
+        
+        // 2. 요소추가 (형제)
+        $('#menu').before('<h1>오늘의 메뉴</h1>');                     // 이전 형제로 추가
+        $('#menu').after('<div><a href="#">투표하러가기</a></div>');   // 다음 형제로 추가  : 메뉴를 기준으로 다음 형제로 <div><a>추가 함
+    </script>
+    <!-- ---------------------------------------------------------------------------------------- -->
+    <ul id="hobbies">
+        <li id="one">TV보다잠자기</li>
+        <li id="two">밥먹고잠자기</li>
+        <li id="three">놀다가잠자기</li>
+        <li id="four">안씻고잠자기</li>
+        <li id="five">아침늦게잠자기</li>
+    </ul>
+    <script>
+        // 1. 요소 제거하기
+        $('li').remove('#five');         // li 중 id="five"인 요소 제거 + 이벤트 제거
+        $('li').remove('#three, #four'); // 값을 전달 할 때는 '요소','요소' 형태로 따로 묶는게 아니고 '요소, 요소'로 한번에 묶어서 전달 함
+
+        // 2. 요소 제거하기
+        $('#two').click(function(){
+            alert('제일 좋아함');
+        });
+        let deleted = $('#two').detach();   // li 중 id="five"인 요소만 제거 (이벤트 남음)
+        $('#hobbies').append(deleted);          // 삭제한 요소를 다시 추가    
+        console.log(deleted);
+
+        // 3. 요소 제거하기
+        $('#hobbies').empty();  // id="hobbies"는 남고, 자식들 모두 제거
+    </script>
+
+    <input type="checkbox" 
+             id="check" 
+          class="check"
+           name="info"
+          value="A"
+        checked="checked">
+
+    <script>
+        
+        // 속성     : attribute, HTML태그에 작성된 구성 요소
+        // 프로퍼티 : property, DOM으로 저장하면 객체가 되는데 그 객체의 구성요소
+        let check = $('#check');    // DOM으로 저장
+        check.change(function(){
+            console.log(check.attr('name'), check.prop('name'));
+            console.log(check.attr('value'), check.prop('value'));      // 실제로는 check.val() 사용해야 함.
+            console.log(check.attr('checked'), check.prop('checked'));  // attr: checked, prop: true
+        });
+
+        // 속성 변경
+        check.attr('value', 'B');   // 기존 value 속성을 'B'로 변경
+        check.prop('value', 'C');   // 상태에 따라서 
+
+        // attr() : 태그에 작성된대로 항상 사용됨.
+        // prop() : 태그의 상태 변화에 따라 값이 변경됨.
+
+        // 속성 추가
+        check.attr('data1', '1000');   // 태그에 data="1000" 속성이 추가
+        check.prop('data2', '2000');   // 객체에 data="2000" 속성이 추가
+        console.log(check.prop('data2'));  // 
+
+        // 속성 제거
+        check.removeAttr('class');  // 태그에 추가된 class 속성 제거
+        check.removeProp('name');   // prop()를 이용해서 추가한 속성 제거
+        check.removeAttr('data1');  // 태그에 추가된 data1 속성 제거
+        check.removeProp('data2');  // 객체에 추가된 data2 속성 제거
+        console.log(check.prop('data2'));
+    </script>
+
+    <h1 id="title">jQuery</h1>
+    <script>
+
+        // CSS 알아내기 : $().css('color')
+        // CSS 적용하기 : $().css('color','green')
+        //             : $().css({'color':'green', 'font-size': '14px'});
+        //             : $().css('color', 'green').css('font-size', '14px');               
+        $('#title').css({
+            'backgroundColor' : 'limegreen',    // camelCase로 바꿔도 되고,
+            'text-align'      : 'center'        // 하이픈(-) 그대로 사용해도 됨.
+        });
+    </script>
+
+    <ul id="colors">
+        <li>RED</li>
+        <li>GREEN</li>
+        <li>BLUE</li>
+    </ul>
+    <script>
+        let colors = $('#colors li');
+
+        // 클래스 부여하기
+        $(colors[0]).addClass('red');
+        $(colors[1]).addClass('green');
+        $(colors[2]).addClass('blue');
+
+        // 클래스 제거하기
+        $(colors[0]).removeClass('red');
+
+        // 클래스 토글(줬다 뺐었다)하기
+        $(colors[0]).click(function(){
+            $(colors[0]).toggleClass('red');
+            // $(this).toggleClass('red');  -------> $(this) == $(colors[0]) : 이벤트 대상
+            // this.toggleClass('red');     -------> this를 이용할 순 있지만 jQuery wrapper로 묶어서 사용
+        });
+
+    </script>
+
+    <!-- -----------------------------------------------------EVENT-------------------------------------------------- -->
+    <div id="container">
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <script>
+        /*
+            jQuery 이벤트
+            1. 많은 이벤트 바인딩(event binding) 방법이 있다.
+               .bind(), .live(), .delegate() 등과 현재 사용되는 .on() 이 있다.      --> 주로 과거에 사용하던 것 들 
+            2. .on() 메소드 특징
+                1) 여러 이벤트를 등록할 수 있다.
+                2) 모든 이벤트를 등록할 수 있다.
+                3) 동적 생성된 요소에 이벤트를 등록할 수 있다.
+                4) click()와 같은 메소드를 사용하면 내부적으로 .on() 메소드가 사용된다.
+            3. 페이지 로드 이벤트
+                1) 
+                $(document).ready(function(){
+
+                });
+            
+                2) 
+                $(function(){
+
+                });
+            4. 기타 이벤트
+                1) .one('click', function(){}) : 한 번만 동작하는 이벤트
+                2) .off('click')               : 이벤트 제거
+        */
+
+        // 1. 이벤트 적용
+        // 1) #container의 자식 중 li를 클릭하면
+        /*
+        $('#container').find('li').on('click', function(){
+            alert($(this).text());            // #container의 자손 li
+        });
+        */
+       // 2) #container의 자식 중 li를 클릭하면
+       $('#container').on('click', 'li', function(event){
+            alert($(this).text());            // #container의 자손 li
+        });
+        
+
+        // 2. 여러 이벤트 설정
+
+        // 1) 다른 이벤트 + 같은 이벤트 리스너
+        /* 
+            $('#container').on('mouseover mouseout', function(){        // --> .on('이벤트 이벤트 이벤트') --> 같은 event Listener
+             console.log('마우스가 돌아다니는군');
+            });
+        */
+
+        // 2) 다른 이벤트 + 다른 이벤트 리스너
+        /*
+        $('#container').on({
+            mouseover: function(){
+                console.log('마우스가 들어왔군');
+            },
+            mouseout : function(){
+                console.log('마우스가 나갔군');
+            },
+            click : function(){
+                console.log('클릭했군');
+            }
+
+        });
+        */
+    </script>
+
+    <!-- 연습1. 아이디/비번으로 로그인하기 -->
+    <!-- 아이디와 비밀번호가 모두 입력되어 있으면 login.html로 submit하시오. -->
+    <script>
+       // 페이지 로드 이벤트
+       $(document).ready(function(){
+           $('#login_form').on('submit', function(event){
+               $(this).children().eq(0)         // $($(this).children([0]) == childer().eq(0)
+               if($(this).children().eq(0).val()==''||$(this).children().eq(1).val()==''){
+                   event.preventDefault();
+                   return false;
+               }
+               alert('로그인을 시도했습니다.');
+               return true;
+           });
+       });
+
+
+       /*
+           <script>
+        $(document).ready(function(){
+        $('#login_form').on('submit', function(event){
+            if($(':text').val()==''){
+                event.preventDefault();
+            }
+            if($(':password').val()==''){
+                event.preventDefault();
+            }
+        });
+        */
+    </script>
+
+    <form id="login_form" action="login.html" method="post">
+        아이디 <input type="text">
+        비밀번호 <input type="password">
+        <button>로그인하기</button>
+    </form>
+    <div id="login_result"></div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "나눔고딕","NanumGothic","Nanum Gothic","dotum,Apple SD Gothic Neo",sans-serif;
+            font-size: 12px;
+            box-sizing: border-box;
+            color: black;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        ul, ol{
+            list-style-type: none;
+        }
+        .header_wrapper {
+            height: 89px;
+            border-bottom: 1px solid #dfe2e6;
+            text-align: center;
+        }
+        .join_wrap {
+            width: 100%;
+        }
+        header h1 {
+         display: block;
+         font-size: 2em;
+         font-weight: bold;   
+        }
+        header a {
+            background-image: url(https://img2.tmon.kr/resources/shared/p/im/membership/sp-membership.png?v=20210831164155);
+            display: inline-block;
+            overflow: hidden;
+            width: 140px;
+            height: 36px;
+            margin-top: 28px;
+            background-repeat: no-repeat;
+            font-size: 0;
+            background-position: 0 0;
+        }
+        h2 {
+            font-size: 25px;
+            margin: 50px 0 25px 0;
+            font-weight: 700;
+            line-height: 32px;
+            text-align: center;
+        }
+        ul {
+            width: 100%;
+        }
+        li {
+            position: relative;
+            width: 400px;
+            list-style: none;
+            margin: 0 auto;
+        }
+        .ch_list {
+            display: flex;
+            width: 140px;
+            height: 100%;
+        }
+        .ch_img {
+            display: inline-block;
+            overflow: hidden;
+            /* position: absolute;
+            top: 0;
+            left: 0; */
+            background-image: url(https://img2.tmon.kr/resources/shared/p/im/membership/sp-membership.png?v=20210831164155);
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-position: -42px -122px;
+        }
+
+        .checked {
+            display: inline-block;
+            overflow: hidden;
+            width: 24px;
+            height: 24px;
+            background-image: url(https://img2.tmon.kr/resources/shared/p/im/membership/sp-membership.png?v=20210831164155);
+            background-repeat: no-repeat;
+            background-position: -104px -94px;
+        }
+        input[type=checkbox] {
+            vertical-align: text-top;
+            position: absolute;
+            visibility: hidden;
+            cursor: pointer;
+        }
+        .ch_list span {
+            cursor: pointer;
+        }
+        /* .confirm {
+            display: inline-block;
+            background-image: url(https://img2.tmon.kr/resources/shared/p/im/membership/sp-membership.png?v=20210831164155);
+            overflow: hidden;
+            height: 24px;
+            width: 24px;
+            background-repeat: no-repeat;
+            background-position: -97px -122px;
+        } */
+        .agreement {
+            width: 100px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .title {
+            font-size: 16px;
+            padding: 10px 0 10px 0;
+        }
+        form {
+            width: 400px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        form div input {
+            width: 100%;
+            height: 45px;
+            border: 1px solid #dfe2e6;
+            border-radius: 0;
+            padding: 10px;
+            outline: none;
+        }
+        .msg {
+            color: rgb(139, 138, 138);
+            margin: 3px 0 20px 0;
+        }
+        .msg_dont{
+            color: red;
+        }
+        button {
+            width: 400px;
+            height: 50px;
+            border-radius: 0;
+            background-color: orange;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            border: 1px solid orange;
+            margin: 10px 0 10px 0;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="join_wrap">
+        <header>
+            <div class="header_wrapper">
+                <h1>
+                    <a href="https://www.tmon.co.kr">TMON</a>
+                </h1>
+            </div> 
+        </header>
+        
+        <section>
+            <h2>약관동의</h2>
+            <div class="ch_box_wrap">
+                <ul>
+                    <li>
+                        <label for="ch_all">
+                            <p class="ch_list">
+                                <span class="ch_img">
+                                    <input id="ch_all" type="checkbox">
+                                </span>
+                                <span class="agreement">모두 확인, 동의합니다.</span>
+                            </p>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="ch_1">
+                            <p class="ch_list">
+                                <span class="ch_img">
+                                    <input id="ch_1" type="checkbox">
+                                </span>
+                                <span class="agreement">이용약관에 동의 합니다.</span>
+                            </p>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="ch_2">
+                            <p class="ch_list">
+                                <span class="ch_img"><input id="ch_2" type="checkbox">
+                                </span>
+                                <span class="agreement">개인정보 수집에 동의합니다.</span>
+                        </p>
+                    </label>
+                </li>
+                <li>
+                    <label for="ch_3">
+                        <p class="ch_list">
+                            <span class="ch_img"><input id="ch_3" type="checkbox">
+                            </span>
+                            <span class="agreement">위치정보 수집에 동의합니다.</span>
+                        </p>
+                    </label>
+                </li>
+                <li>
+                    <label for="ch_4">
+                        <p class="ch_list">
+                            <span class="ch_img"><input id="ch_4" type="checkbox"></span>
+                            <span class="agreement">프로모션 정보 수집에 동의합니다.</span>
+                        </p>
+                    </label>
+                </li>
+            </ul>
+            </div>
+                <h2>회원정보 입력</h2>
+                <form action="#" > <!-- method="post" -->
+                    <div class="user_id_wrap">
+                        <p class="title">아이디</p>
+                        <input id="user_id" type="text" name="user_id" placeholder="아이디를 입력해 주세요">
+                        <span class="confrim"></span>
+                        <p class="msg">영문/숫자 4자 이상을 입력해 주세요.</p>
+                    </div>
+                    <div class="user_pw_wrap">
+                        <p class="title">비밀번호</p>
+                        <input id="user_pw" type="password" name="user_pw" placeholder="비밀번호를 입력해 주세요">
+                        <p class="msg">영문/숫자 4자 이상을 입력해 주세요.</p>
+                    </div>
+                    <div class="pw_confirm_wrap">
+                        <p class="title">비밀번호 재확인</p>
+                        <input id="pw_confirm" type="password" placeholder="비밀번호를 다시한번 입력해 주세요">
+                        <p class="msg"></p>
+                    </div>
+                    <button>가입하기</button>   <!-- submmit-->
+                </form>
+        </section>
+    </div>
+</body>
+</html>

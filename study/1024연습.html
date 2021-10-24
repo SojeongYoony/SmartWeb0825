@@ -7,6 +7,117 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <title>네이버 로그인 연습</title>
+    <style>
+    button, input, select, textarea {
+        border-radius: 0;
+        border: none;
+        background: 0 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        -webkit-text-size-adjust: none;
+    }
+    body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: none;
+        font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #222;
+    }
+    .u_skip {
+        position: absolute;
+        clip: rect(0 0 0 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+    }
+    div {
+        display: block;
+    }
+    .wrap{
+        position: relative;
+        height: 100%;
+        letter-spacing: -.5px;
+    }
+    body {
+        height: 100%;
+        color: #222;
+        background-color: #fff;
+    }
+    html {
+        height: 100%;
+        font-size: 14px;
+    }
+    .u_skip::before{
+        display: block;
+        width: 0;
+        height: 0;
+        content: '\00a0';
+        font-size: 0;
+    }
+    .sel {
+        position: relative;
+        font-size: 12px;
+        font-weight: 400;
+        list-style: 18px;
+        width: 100%;
+        min-width: 95px;
+        height: 30px;
+        padding: 4px 10px 6px 8px;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .header .header_inner {
+        position: relative;
+        width: 743px;
+        margin: 0 auto;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .wrap {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        height: 100%;
+        color: #222;
+        background-color: #fff;
+    }
+    option {
+        font-weight: normal;
+        display: block;
+        white-space: nowrap;
+        min-height: 1.2em;
+        padding: 0px 2px 1px;
+    }
+    .lang {
+        position: absolute;
+        top: 20px;
+        right: 0;
+    }
+    div {
+        display: block;
+    }
+    .header {
+        padding-bottom: 69px;
+        box-sizing: border-box;
+    }
+    header {
+        display: block;
+    }
+
+    </style>
 </head>
 <body>
     <div id="wrap" class="wrap">
@@ -25,7 +136,6 @@
                         <option value="en_US">English</option>
                         <option value="zh-Hans_CN">중국어</option>
                     </select>
-                    ::after
                 </div>
             </div>
         </header>
@@ -37,16 +147,13 @@
                         <li class="menu_item" role="presentation">
                             <a href="#" id="loinid" class="menu_id on" role="tab" aria-selected="true">
                                 <span class="menu_text">
-                                    ::before
                                     <span class="text">ID 로그인</span>
                                 </span>
-                                ::after
                             </a>
                         </li>
                         <li class="menu_item" role="presentation">
                             <a href="#" id="ones" class="menu_ones" role="tab" aria-selected="false">
                                 <span class="menu_text">
-                                    ::before
                                     <span class="text">일회용 번호</span>
                                 </span>
                             </a>
@@ -54,7 +161,6 @@
                         <li class="menu_item" role="presentation">
                             <a href="#" id="qrcode" class="menu_qr" role="tab" aria-selected="false">
                                 <span class="menu_text">
-                                    ::before
                                     <span class="text">QR코드</span>
                                 </span>
                             </a>
@@ -104,7 +210,6 @@
                                         <div class="keep_check">
                                             <input type="checkbox" id="keep" name="nvlong" class="input_keep" value="off">
                                             <label for="keep" class="keep_text">
-                                                ::before
                                                 "로그인 상태 유지"
                                             </label>
                                         </div>
@@ -115,7 +220,6 @@
                                             <span class="switch">
                                                 <input type="checkbox" id="switch" class="switch_checkbox" value="off">
                                                 <label for="switch" class="switch_btn">
-                                                    ::before
                                                     <span class="blind" id="switch_blind">on</span>
                                                 </label>
                                             </span>
@@ -151,8 +255,8 @@
                 </div>
                 <ul class="find_wrap" id="find_wrap">
                     <li><a target="_blank" href="#" class="find_text">비밀번호 찾기</a></li>
-                    <li>::before<a target="_blank" href="#" class="find_text">아이디 찾기</a></li>
-                    <li>::before<a target="_blank" href="#" class="find_text">회원가입</a></li>
+                    <li><a target="_blank" href="#" class="find_text">아이디 찾기</a></li>
+                    <li><a target="_blank" href="#" class="find_text">회원가입</a></li>
                 </ul>
                 <!-- 배너 -->
                 <div class="banner_wrap">
@@ -173,19 +277,16 @@
                         </a>
                     </li>
                     <li>
-                        ::before
                         <a target="_blank" class="footer_item" href="#" id="fot.privacy">
                             <span class="text">개인정보처리방침</span>
                         </a>
                     </li>
                     <li>
-                        ::before
                         <a target="_blank" class="footer_item" href="#" id="fot.disclaimer">
                             <span class="text">책임의 한계와 법적고지</span>
                         </a>
                     </li>
                     <li>
-                        ::before
                         <a target="_blank" class="footer_item" href="#" id="fot.help">
                             <span class="text">회원정보 고객센터</span>
                         </a>

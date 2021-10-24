@@ -116,7 +116,141 @@
     header {
         display: block;
     }
-
+    .footer .footer_copy .footer_logo, .header .logo {
+        background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_00_common_c860f0da.png);
+        background-size: 244px 92px;
+        background-repeat: no-repeat;
+    }
+    .header .logo {
+        display: inline-block;
+        margin-top: 111px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        width: 244px;
+        height: 49px;
+    }
+    .blind {
+        position: absolute;
+        clip: rect(0 0 0 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+    }
+    .login_wrap {
+        box-sizing: border-box;
+        width: 553px;
+        margin: 0 auto;
+    }
+    .menu_id.on, .menu_ones.on, .menu_qr.on {
+        border-color: #c6c6c6;
+        background-color: #fff;
+        z-index: 5;
+    }
+    .menu_id, .menu_ones, .menu_qr {
+        display: block;
+        position: relative;
+        height: 69px;
+        padding-top: 20px;
+        border: 1px solid #e3e3e3;
+        border-bottom: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .menu_item {
+        position: relative;
+        display: table-cell;
+        vertical-align: top;
+    }
+    .menu_id.on .menu_text::before {
+        background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_00_common_c860f0da.png);
+        background-position: -26px -172px;
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+    .menu_id {
+        border-right: 0;
+        border-radius: 6px 0 0 0;
+    }
+    .bullet_help, .captcha_form .image::after, .captcha_form .reload::after, .captcha_form .voice::after, .captcha_wrap .voice_box .icon_voice, .chatbot .icon_chatbot, .icon_delete, .id_pw_wrap .input_row .icon_cell .icon_id, .id_pw_wrap .input_row .icon_cell .icon_pw, .id_pw_wrap .input_row.on .icon_cell .icon_id, .id_pw_wrap .input_row.on .icon_cell .icon_pw, .img_lock, .img_wowpoint, .ip_relogin_box .relogin_close::after, .ip_relogin_box .relogin_tip::before, .keep_check .keep_text::before, .keep_check input:checked+.keep_text::before, .lang::after, .menu_id .menu_text::before, .menu_id.on .menu_text::before, .menu_id.on::after, .menu_ones .menu_text::before, .menu_ones.on .menu_text::before, .menu_ones.on::after, .menu_ones.on::before, .menu_qr .menu_text::before, .menu_qr.on .menu_text::before, .menu_qr.on::before, .nudge_banner .nudge_close .icon_nudge_close, .ones_text .bullet_set, .pop_img_lock, .pop_ones_text .bullet_set, .qrcode_help_stepbox .popup_close::after, .qrcode_help_stepbox .step_title::before, .sns_wrap li:nth-child(1) .sns_text::before, .sns_wrap li:nth-child(2) .sns_text::before, .sns_wrap li:nth-child(3) .sns_text::before, .step_ask .ask_text::before, .sub_desc .bullet_greendot, .sub_desc .bullet_lens, .time_wrap .btn_renewal::before {
+    background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_01_login_2d02c3e8.png);
+    background-size: 229px 196px;
+    background-repeat: no-repeat;
+    }
+    .menu_id.on::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -8px;
+        background-position: -146px 0;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 69px;
+    }
+    .menu_ones {
+        border-right: 0;
+        border-radius: 0;
+    }
+    .menu_qr {
+        border-radius: 0 6px 0 0;
+    }
+    .nudge_banner {
+        position: absolute;
+        top: -51px;
+        right: 0;
+        padding: 9px 32px 10px 11px;
+        border-radius: 6px;
+        background-image: linear-gradient(98deg, #0c93ed, #6b87e7);
+        box-shadow: rgb(97 153 231 / 24%) 0 3px 8px 0;
+        z-index: 10; 
+    }
+    .nudge_banner .nudge_close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 36px;
+    }
+    button, input, select, textarea {
+    border-radius: 0;
+    border: none;
+    background: 0 0;
+    appearance: none;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+    .nudge_banner .nudge_text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        white-space: nowrap;
+        color: #fff;
+    }
+    .panel_inner {
+        padding: 24px;
+    }
+    .input_row {
+        position: relative;
+        display: block;
+        height: 100%;
+        border: 1px solid #dadada;
+        padding: 17px 18px 17px 19px;
+        border-radius: 6px;
+        box-sizing: border-box;
+        text-align: left;
+        box-shadow: 0 2px 6px 0 rgb(68 68 68 / 8%);
+    }
+    .id_pw_wrap .input_row {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
+    .id_pw_wrap .input_row:first-child {
+        border-radius: 6px 6px 0 0;
+        box-shadow: none;
+    }
+    
     </style>
 </head>
 <body>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Quiz2 : 편지쓰기</title>
 </head>
 <body>
 
@@ -16,6 +16,52 @@
 		사랑해요 배수지 아이러브유 배수지
 		배수지짱!	
 	 -->
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script>
+		// 페이지 로드 이벤트 처리 : 문서의 모든 내용 읽어오기
+		$(document).ready(function(){
+			
+			let now = new Date();
+			let year = now.getFullYear();
+			let month = now.getMonth() + 1;
+			let day = now.getDate();
+			let today = year+ '-' + month+ '-' + day;
+			
+			$('#date').attr('placeholder', today);
+				if($('#date').val()==''){
+					alert('작성일 미입력 시, 현재 날짜가 입력됩니다.');
+					$('#date').val(today);
+					$('#from').focus();
+				}
+			
+			$('#btn').on('click', function(){
+				// alert('동작체크 왜자꾸 클릭이 안먹히냐');
+				
+				 if($('#from').val()==''){
+					alert('보내는 사람은 누구입니까?');
+					$('#from').focus();
+					return;
+					
+				} else if($('#to').val()==''){
+					alert('받는 사람은 누구입니까?');
+					$('#to').focus();
+					return;
+					
+				} else if($('textarea').val()==''){
+					alert('내용이 없습니다. 내용을 입력하세요!');
+					$('textarea').focus();
+					return;
+				}
+			
+			$('form').attr('action', '/01_SERVLET/Quiz2');
+			$('form').submit();
+				
+			});
+			
+		});
+	</script>
+	
 	<form>
 		<input type="text" name="date" id="date">
 		<br>
@@ -25,7 +71,8 @@
 		<br>
 		<textarea name="content" placeholder="내용"></textarea>
 		<input type="button" value="편지작성하기" id="btn">
-	</form>
+	</form>	
+
 
 </body>
 </html>

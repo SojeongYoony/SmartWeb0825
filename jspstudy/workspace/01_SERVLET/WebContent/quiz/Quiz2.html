@@ -27,13 +27,14 @@
 			let month = now.getMonth() + 1;
 			let day = now.getDate();
 			let today = year+ '-' + month+ '-' + day;
+			// now = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();	// 선생님 방식
 			
 			$('#date').attr('placeholder', today);
-				if($('#date').val()==''){
-					alert('작성일 미입력 시, 현재 날짜가 입력됩니다.');
-					$('#date').val(today);
-					$('#from').focus();
-				}
+			
+			// alert('작성일 미입력 시, 현재 날짜가 입력됩니다.');
+			$('#date').val(today);
+			$('#from').focus();
+			
 			
 			$('#btn').on('click', function(){
 				// alert('동작체크 왜자꾸 클릭이 안먹히냐');
@@ -54,6 +55,7 @@
 					return;
 				}
 			
+			$('form').attr('method', 'post');
 			$('form').attr('action', '/01_SERVLET/Quiz2');
 			$('form').submit();
 				
@@ -63,13 +65,14 @@
 	</script>
 	
 	<form>
-		<input type="text" name="date" id="date">
+		<input type="text" name="date" id="date">	<!-- readonly속성 추가 시, 수정 못 함 (읽기 전용)-->
 		<br>
 		<input type="text" name="from" id="from" placeholder="보내는사람">
 		<br>
 		<input type="text" name="to" id="to" placeholder="받는사람">
 		<br>
 		<textarea name="content" placeholder="내용"></textarea>
+		<br>
 		<input type="button" value="편지작성하기" id="btn">
 	</form>	
 

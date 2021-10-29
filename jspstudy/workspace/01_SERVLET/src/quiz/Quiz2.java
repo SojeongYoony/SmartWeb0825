@@ -1,10 +1,11 @@
 package quiz;
 
+
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,41 +44,71 @@ public class Quiz2 extends HttpServlet {
 		// 작성자 : from
 		// Optional<String> optFrom = Optional.ofNullable(request.getParameter("from"));
 		String from = request.getParameter("from");
+		if (from.isEmpty()) {
+			from = "작성자 없음";
+		}
 		
 		// 수신자 : to
 		//Optional<String> optTo = Optional.ofNullable(request.getParameter("to"));
 		String to = request.getParameter("to");
-			
+		if (from.isEmpty()) {
+			to = "수신자 없음";
+		}
 		// 내용 : content
 		//Optional<String> optContent = Optional.ofNullable(request.getParameter("content"));
 		String content = request.getParameter("content");
-		
+		if (content.isEmpty() ) {
+			content = "내용 없음";
+		}
+
+		// 잘 받아왔나 확인
 		System.out.println(date + from + to + content);
+		
+		// 작성자 IP 알아내는 법
+		// 1. 직접 접속한 경우    : request.getRemoteAddr();
+		// 2. 거쳐서 접속한 경우 : request.getHeader("X-Forwarded-For");
+		String ip = request.getHeader("X-Forwarded-For");
+		if (ip == null) {			// Optional을 사용할 수 있음
+			ip = request.getRemoteAddr();
+		}
+		
+		// file 생성
+		// String dir = "D:\\SmartWeb0809\\jspstudy\\";
+		File dir = new File("D:\\SmartWeb0809\\jspstudy\\workspace\\01_SERVLET\\storage");
+		if (dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		String fileName = date+"_"+ from + ".txt";
+		
+		// 파일 저장 경로
+		// String file = dir+fileName;
+		File file = new File(dir, fileName);		
+		
+		// 문자 기반 출력 스트림
+		// FileWriter, PrintWriter, BufferedWriter 등
+//		FileWriter fw = null;
+//		bw = new FileWriter(file);
+		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		
+		// 데이터 보내기
+		bw.write("작성일 : " + date + "\n");
+		bw.write("보내는사람 : " + from + "\n");
+		bw.write("받는사람 : " + to + "\n");
+		bw.write(content);
+		System.out.println("파일 생성완료");
+		System.out.println(dir);
+		if (bw != null) bw.close();	
 		
 		// response 타입
 		response.setContentType("text/html; charset=UTF-8");
-		
-		
-		// file 생성
-		String dir = "D:\\SmartWeb0809\\jspstudy\\";
-		String fileName = date+"_"+ from + ".txt";
-		String file = dir+fileName;
-		FileWriter fw = null;
-		fw = new FileWriter(file);
-		
-		fw.write("작성일 : " + date + "\n");
-		fw.write("보내는사람 : " + from + "\n");
-		fw.write("받는사람 : " + to + "\n");
-		fw.write(content);
-		System.out.println("파일 생성완료");
-		System.out.println(dir);
-		fw.close();
 		
 		// response 출력 스트림
 		PrintWriter out = response.getWriter();
 		
 		out.println("<script>");
 		out.println("alert('"+ from + "이(가) " + to + "에게 전송" +"');");
+		out.println("alert('"+ file.getAbsolutePath() + " 파일이 생성되었습니다.');");
 		out.println("alert('편지 작성 화면으로 돌아갑니다.');");
 		out.println("history.back();");
 		out.println("</script>");

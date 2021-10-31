@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+#wrap{
+    width: 1200px;
+    height: 500px;
+}
+header, section, aside, footer {
+    border: 1px solid black;
+}
+#menu_wrap{
+    display: flex;
+    list-style-type: none;
+    border-top: 1px solid black;
+}
+#menu_wrap li{
+    padding: 10px;
+}
+.content_box{
+    position: relative;
+    display: flex;
+    height: 100%;
+}
+section {
+    position: absolute;
+    left: 200px;
+    width: 800px;
+    height: 100%;
+}
+#aside_left{
+    position: absolute;
+    width: 200px;
+    height: 100%;
+}
+#aside_right {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    height: 100%;
+}

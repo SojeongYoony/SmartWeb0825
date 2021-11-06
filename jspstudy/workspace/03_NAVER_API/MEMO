@@ -1,0 +1,146 @@
+_SGCqXrZPI5g0pMyEdOe
+
+4AkripDV3f
+--------------------------------------
+
+1. 아이디/시크릿 전송 및 키 요청									   -- 관련 값 키 요청은 : param을 붙여서
+
+2. 네이버가 키 발급해 줌 (JSON 형식의 키) : JSON 형식 처리 라이브러리  -- JSON을 response 받는 것, 라이브러리 사용해야 함 :자바에선 자체적으로 기능이 없음 
+
+3. 아이디/시크릿/키 전송 및 이미지 요청							       -- 키 받아서 키 줄테니 이미지 내놔라.
+
+4. 네이버가 이미지 발급해 줌
+
+5. 아이디/시크릿/키/그림문자 전송 
+
+6. 네이버는 성공/실패 여부 반환(JSON 형식)
+
+
+----------------------------------------------------------
+
+실행순서 :  Ex01 돌려서 키 받아서 Ex02에 키 수정하고 Ex03은 키값과 이미지의 문자를 넣고 실행해야한다
+
+
+
+
+
+
+
+
+
+					/*      위의 for문 코드와 같다 
+				con.setRequestProperty("X-Naver-Client-Id", clientId);     // request header값을 쓰겠다.
+				con.setRequestProperty("X-Naver-Client-Secret", clientSecret);		// 계속 넣어뒀다가 반복문으로 빼낸다.		  
+					 */
+
+
+----------------------------------------------
+
+
+
+
+Write b 배열의 0번 인덱스부터 rc만큼만 쓰겠습니다
+(write b, 0, rc)
+
+
+-----------------------------------------
+
+
+Unhandled exception type MalformedURLException
+익셉션 처리해라 
+--> 주소를 틀렸을 경우 발생할 익셉션을 대비하여
+
+====================================================
+		HttpURLConnection con = null;
+		
+		try {
+			url = new URL(apiURL);
+			con = url.openConnection();
+			
+			
+			HttpURLConnection extends 
+			
+			
+openConnection은 URLConnection을 반환한다.
+그런데 
+down casting이 필요하다 : 부모가 자식타입으로 다운케스팅 (상속관계)
+
+
+연결 통로는 con 이고 받아오는 데이터는 text타입이다 이미지가 아님
+읽어 오는것 input이고 문자를 읽어오는 것 이기 때문에 character 기반임  // 참고로 이미지는 byte기반임.
+
+
+
+
+
+
+43번 라인
+
+				InputStream is = con.getInputStream();			// reader : character , inputstream : byte기반
+				InputStreamReader isr = new InputStreamReader(is);		// inputstream reader는 
+				== 				InputStreamReader isr = new InputStreamReader(con.getInputStream());		
+				
+
+	InputStreamReader 는 IOException은  				// 얘는 못 읽었어요 == 코드에서는 api 못 읽었어요
+	con = (HttpURLConnection)url.openConnection();		// 얘는 연결 실패했어요
+	
+	
+	
+----------- 결과 : 네이버로부터 반환 받은 데이터 : {"key":"wmyhrEyLwFYkZ1AE"} --------> 이걸 빼오기 위해서 라이브러리가 필요하다.
+
+https://mvnrepository.com/ 
+library  를 제공하는 
+ : central
+ 
+ 
+ JSON in Java
+ JSON.simple		---> google에서 만듦.				
+ jackson --- Spring 학습 시 사용할 라이브러리.
+ 
+ // bundle download
+
+
+
+
+
+
+
+
+
+
+				JSONObject obj = new JSONObject(sb.toString());
+				String captchaKey = (String) obj.get("key");	// Object 이기 때문에 String으로 Casting 해야 한다.
+				
+				
+				JSON Library 덕에 쓸 수 있는 부분.
+
+
+
+
+
+
+system.out.println은 최종본에서는 다 삭제 == 성능 갉아먹음
+
+/*****************RealPath를 구할 수 있는 또 다른 방법******************/
+application은 JSP의 내장객체이므로 자바에서는 사용할 수 없다.
+따라서 아래 코드로 구현하여 request없이 RealPath를 구할 수 있다.
+request.getServletContext().getRealPath(path);			---> String type의 real path를 알 수 있다.
+
+	파일이 들어갈 경로를 설정하고 폴더를 만듦
+						String realPath = request.getServletContext().getRealPath("storage");		// 경로 지정해줌. storage폴더 만들어
+						File dir = new File(realPath);
+						if (dir.exists() == false) {
+							dir.mkdirs();		
+						}
+
+
+
+
+
+/**************************포워드 리퀘스트 구분****************************/
+
+		// 포워드 : request 가지고 이동 - request에 파일명 저장
+		// 리다이렉트 : request 없이 이동		
+
+
+객체로 전달하는 것은 주소값을 전달하는 것 이기 때문에 누가 작업하던 완벽히 같음(파일이 바껴도)

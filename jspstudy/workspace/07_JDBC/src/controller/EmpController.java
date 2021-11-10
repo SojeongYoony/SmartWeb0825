@@ -58,7 +58,7 @@ public class EmpController extends HttpServlet {
 			modelAndView = empService.execute(request, response);
 		}
 		
-		if ( modelAndView == null) {
+		if ( modelAndView == null) {		// 이동이 없으면 메소드 끝낸다.
 			return;
 		}
 		

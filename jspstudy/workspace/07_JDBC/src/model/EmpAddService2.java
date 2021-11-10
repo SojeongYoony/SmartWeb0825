@@ -9,7 +9,7 @@ import common.ModelAndView;
 import dao.EmpDAO;
 import dto.EmpDTO;
 
-public class EmpAddService implements EmpService {
+public class EmpAddService2 implements EmpService {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) {
@@ -21,35 +21,29 @@ public class EmpAddService implements EmpService {
 		
 		EmpDAO empDAO = EmpDAO.getInstance();
 		int result = empDAO.insertEmp(empDTO);				// DB 들어가는 것 까지 됨.
-		
-		ModelAndView modelAndView = null;
-		if(result > 0) {		// if(result == 1) 
-			modelAndView = new ModelAndView("/JDBC/selectList.emp", true);	// DB 수정 이후에는 redirect 할 것. insert는 DB의 수정이 이뤄지므로 redirect
-											// selectEmpList로 가게 되면 DB를 거치고 가지 않으므로 
+
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			if(result > 0) {
+			out.println("<script>");
+			out.println("alert('등록 성공')");
+			out.println("location.href='/JDBC/selectList.emp';");
+			// location.href는 redirect와 같음.
+			out.println("</script>");
+			out.close();			
 		} else {
-			// 경고창 띄우기
-			PrintWriter out = null;
-			try {
-				out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('사원 등록이 실패했습니다.')");
 				out.println("history.back();");
 				out.println("</script>");
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if ( out!= null) {
-						out.close();
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				out.close();			
 			}
-			
+		} catch (Exception e) {
+					e.printStackTrace();			
 		}
 		
-		return modelAndView;
+		return null;		// modelandview를 null 값으로 넣어주면 controller 두번째 if문에서 걸려 동작 끝. 
 	}
 
 }

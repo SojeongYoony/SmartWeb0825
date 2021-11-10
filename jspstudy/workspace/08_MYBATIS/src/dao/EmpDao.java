@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -114,29 +115,36 @@ public class EmpDao {
 		
 	}
 	
+	// 4. 사원 수정
+	public int updateEmp(EmpDto empDto) {
+		
+		SqlSession ss = factory.openSession(false);		// false는 commit() 하고 싶어서임.
+		
+		int result = ss.update(NAMESPACE + ".updateEmp", empDto);
+		
+		if (result > 0) {
+			ss.commit();
+		}
+		
+		ss.close();
+		
+		return result;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 5. 사원 삽입
+	public int insertEmp(Map<String, Object> map) {
+		
+		SqlSession ss =factory.openSession(false);
+		
+		int result = ss.insert(NAMESPACE + ".insertEmp", map);
+		
+		if (result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		
+		return result;
+		
+	}
 
 }

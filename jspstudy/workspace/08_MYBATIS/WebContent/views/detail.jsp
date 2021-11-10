@@ -31,6 +31,9 @@
 			<div>
 				<a href="/MYBATIS/deleteEmp.do?num=${emp.num}">삭제</a>
 			</div>
+			<div>
+				<a href="/MYBATIS/updateEmpForm.do?num=${emp.num}">수정</a>	<!-- 수정을 위해 다른 곳으로 이동하겠다. ex) 비밀번호 변경 -->
+			</div>
 		</c:if>
 			<a href="/MYBATIS/selectEmpList.do">목록으로 이동</a>
 	</div>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- SQL문 작성하는 곳 == mapper -->
+
+
+<!-- namespace는 mapper의 전체 경로를 작성해 둔다. -->
+<mapper namespace="mybatis.mapper.sqlmap">
+
+	<!-- Board List -->
+	<select id="selectAllBoardList" resultType="dto.BoardDto">
+		SELECT idx, title, writer, content, register
+		  FROM board
+		 ORDER BY idx DESC	
+	</select>
+	
+	<!-- select one -->
+	<select id="selectOne" parameterType="Long" resultType="dto.BoardDto">
+		SELECT idx, title, writer, content
+		  FROM board
+		 WHERE idx = #{idx}
+	</select>
+	
+	<!-- insert -->
+	<insert id="insertBoard" parameterType="dto.BoardDto">
+		INSERT INTO board (idx, title, writer, content, register)
+		VALUES (board_seq.nextval, #{title}, #{writer}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+	</insert>
+	
+	<!-- update -->
+	<update id="updateBoard" parameterType="dto.BoardDto">
+		UPDATE board
+		   SET title = #{title}
+		     , content = #{content}
+		 WHERE idx = #{idx}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteOne" parameterType="Long">	<!-- idx가 전달되니 long type -->
+		DELETE
+		  FROM board
+		 WHERE idx = #{idx}
+	</delete>
+	
+	<!-- total -->
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM board
+	</select>
+
+	
+</mapper>

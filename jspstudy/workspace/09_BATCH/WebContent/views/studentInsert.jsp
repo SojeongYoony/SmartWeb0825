@@ -102,7 +102,7 @@
 		};
 		// 국어 점수 체크 함수
 		function fnKorCheck(){
-			if( isNaN($('#kor').val()) || $('#kor').val() < 0 || $('#kor').val() > 100){
+			if( isNaN($('#kor').val()) || $('#kor').val() < 0 || $('#kor').val() > 100){		// 숫자의 범위는 정규식에서 정하지 않는다.
 				korPass = false;
 			} else {
 				korPass = true;

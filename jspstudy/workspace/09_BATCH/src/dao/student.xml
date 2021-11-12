@@ -52,7 +52,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE sno = #{sno}
 	</update>
 
-
+	<!-- 8. TOP3 목록 반환 -->
+	<select id="selectTop3List" resultType="dto.Student">
+	  SELECT a.sno, a.name, a.kor, a.eng, a.mat, a.ave, a.grade
+	    FROM (SELECT sno, name, kor, eng, mat, ave, grade
+	    	    FROM student
+	    	   ORDER BY ave DESC) a
+	   WHERE <![CDATA[ROWNUM <= 3]]>
+	<!-- 부등호 사용 방법. -->
+	</select>
 
 
 

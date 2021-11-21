@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.mybatis.board">	<!-- package.filename -->
+
+	<!-- board list -->
+	<select id="selectBoardList" resultType="dto.Board">
+		SELECT BNO, WRITER, CONTENT, BDATE
+		  FROM BOARD
+		 ORDER BY BNO
+	</select>
+
+	<!-- insert -->
+	<insert id="insertBoard" parameterType="dto.Board">
+		INSERT INTO BOARD
+		VALUES (#{bNo}, #{writer}, #{content}, SYSDATE)
+	</insert>
+	
+	<!-- delete Board -->
+	<delete id="deleteBoard" parameterType="String">		
+		DELETE 
+		  FROM BOARD
+		 WHERE BNO = #{bNo}
+	</delete>
+	
+	<!-- select 10000 -->
+	<select id="selectBoardBybNo" parameterType="String" resultType="dto.Board">
+		SELECT BNO, WRITER, CONTENT, BDATE
+		  FROM BOARD
+		 WHERE BNO = #{bNo}
+	</select>
+	
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.notice">	<!-- package.filename -->
+	
+	<!-- select list -->
+	<select id="selectNoticeList" resultType="dto.Notice">
+		SELECT nno, writer, title, content, hit, ip, ndate, nlastmodified
+	      FROM notice
+	</select>
+	
+	<!-- select one -->
+	<select id="selectNoticeView" parameterType="Long" resultType="dto.Notice">
+		SELECT nno, writer, title, content, hit, ip, ndate, nlastmodified
+	      FROM notice
+	     WHERE nno = #{nNo}
+	</select>
+<!-- nNo : Long Type => parameter Type == Long Type -->
+	
+	<!-- hit ++ :: 번호(nNo)가 일치하는 게시글의 hit를 늘려라 -->
+	<update id="updateNoticeHit" parameterType="Long">
+		UPDATE NOTICE
+		   SET HIT = HIT + 1
+		 WHERE NNO = #{nNo}
+	</update>
+
+	<!-- insertNotice -->
+	<insert id="insertNotice" parameterType="dto.Notice">
+		INSERT INTO notice
+		VALUES (NOTICE_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, 0, #{ip}, SYSDATE, SYSDATE)
+	</insert>
+	
+	<!-- update notice content -->
+	<update id="updateNotice" parameterType="dto.Notice">
+		UPDATE notice
+		   SET title = #{title}, content = #{content}, nlastmodified = SYSDATE
+		 WHERE nno = #{nNo}
+	</update>
+	
+	<!-- delete notice content -->
+	<delete id="deleteNotice" parameterType="Long">
+		DELETE
+		  FROM notice
+		 WHERE nno = #{nNo}
+	</delete>
+
+</mapper>

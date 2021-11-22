@@ -21,6 +21,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <mapper resource="dao/member.xml"/>		<!-- dao세 개 쓸거임 == dao : table당 한개 -->
         <mapper resource="dao/notice.xml"/>		<!-- "."대신 "/"사용 주의  -->
         <mapper resource="dao/reply.xml"/>		<!-- dao세 개 쓸거임 == dao : table당 한개 -->
+        <mapper resource="dao/free.xml"/>		
 	</mappers>
 	
 </configuration>

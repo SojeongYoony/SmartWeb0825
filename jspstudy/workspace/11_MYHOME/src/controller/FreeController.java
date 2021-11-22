@@ -9,18 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ModelAndView;
-import service.member.MemberIdCheckService;
-import service.member.MemberJoinService;
-import service.member.MemberLeaveService;
-import service.member.MemberLoginService;
-import service.member.MemberLogoutService;
-import service.member.MemberService;
+import service.free.FreeInsertService;
+import service.free.FreeListService;
+import service.free.FreeService;
+import service.free.FreeUpdateService;
+import service.free.FreeViewService;
 
-@WebServlet("*.member")
-public class MemberController extends HttpServlet {
+@WebServlet("*.free")
+public class FreeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MemberController() {
+    public FreeController() {
         super();
     }
 
@@ -35,27 +34,27 @@ public class MemberController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length() + 1);
 		
-		MemberService service = null;
+		FreeService service = null;
 		ModelAndView mav = null;
 		
 		switch(command) {
-		case "login.member" :
-			service = new MemberLoginService();
+		case "list.free" :
+			service = new FreeListService();
 			break;
-		case "logout.member" :
-			service = new MemberLogoutService();
+		case "insertForm.free" :
+			mav = new ModelAndView("free/insert.jsp", false);
 			break;
-		case "joinForm.member" :
-			mav = new ModelAndView("member/join.jsp", false);
+		case "insert.free" :
+			service = new FreeInsertService();
 			break;
-		case "join.member" :
-			service = new MemberJoinService();
+		case "view.free" :
+			service = new FreeViewService();
 			break;
-		case "idCheck.member" :
-			service = new MemberIdCheckService();
+		case "updateForm.free" :
+			mav = new ModelAndView("free/update.jsp", false);
 			break;
-		case "leave.member" :
-			service = new MemberLeaveService();
+		case "update.free" :
+			service = new FreeUpdateService();
 			break;
 		}
 		

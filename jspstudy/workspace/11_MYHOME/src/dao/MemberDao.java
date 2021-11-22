@@ -49,5 +49,21 @@ public class MemberDao {
 		return result;
 	}
 	
+	/* delete member */
+	public int deleteMember(Long mNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("dao.member.deleteMember", mNo);
+		if (result > 0) ss.commit();
+		ss.close();
+		return result;
+	}
+	
+	public int deleteMemberLog(String id) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("dao.member.deleteMemberLog", id);
+		if (result > 0) ss.commit();
+		ss.close();
+		return result;
+	}
 	
 }

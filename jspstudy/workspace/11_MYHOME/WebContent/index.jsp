@@ -17,11 +17,15 @@
 		<nav>
 			<ul>
 				<li><a href="list.notice">공지사항</a></li>		<%-- context path(MYHOME)는 생략 --%>
+				<li><a href="list.free">자유게시판</a></li>		<%-- context path(MYHOME)는 생략 --%>
 			</ul>
 		</nav>
 		<c:if test="${loginUser != null}">
 			<div>
-				<h3>${loginUser.name}님 반갑습니다.<input type="button" value="로그아웃" onclick="location.href='logout.member'"></h3>
+				<h3>${loginUser.name}님 반갑습니다.
+					<input type="button" value="로그아웃" onclick="location.href='logout.member'">
+					<input type="button" value="회원탈퇴" onclick="location.href='leave.member'">
+				</h3>
 			</div>
 		</c:if>
 	</header>

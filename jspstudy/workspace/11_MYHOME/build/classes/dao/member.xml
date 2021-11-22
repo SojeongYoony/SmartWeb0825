@@ -26,4 +26,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO member
 		VALUES (MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, SYSDATE)
 	</insert>
+	
+	<!-- delete member -->
+	<delete id="deleteMember" parameterType="Long">
+ 		DELETE
+ 		  FROM member
+ 		 WHERE mno = #{mNo}	
+	</delete>
+	
+	<!-- delete MemberLog id 받아와야 함 == String == id가 일치하는 회원의 log를 함께 지우기 (외래키로 묶여있음)  이유는 글의 작성자/ 댓글의 작성자 모두 id로 묶어서 사용하고 있으므로 -->
+	<delete id="deleteMemberLog" parameterType="String">
+		DELETE
+		  FROM member_log
+		 WHERE id = #{id}
+	</delete>
+	
+	
 </mapper>

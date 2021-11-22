@@ -8,11 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>시작화면</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		if (confirm('jdbc 확인으로 이동')) {
-			location.href='index_jdbc.jsp';
-		}
-	</script>
 	
 	<style>
 		*{
@@ -56,7 +51,7 @@
 		
 		function fnSelectBoardList(){
 			$.ajax({
-				url: 'selectBoardList.do',
+				url: 'selectBoardList.jdbc',
 				type: 'get',
 			// data : 서버로 보내는 파라미터  		-- 여기선 없음
 			dataType: 'json', 	// DB에게서 받아오는 data
@@ -86,8 +81,11 @@
 					alert('게시글번호는 5자리입니다.');
 					return;
 			} // end if
+			
+			// jQuery.({})   == $.ajax({})
+			
 				$.ajax({
-					url: 'insertBoard.do',
+					url: 'insertBoard.jdbc',
 					type: 'post',
 					data: $('#f').serialize(),
 					dataType: 'json',
@@ -96,7 +94,7 @@
 						fnSelectBoardList();		// 넣었을때 목록을 다시 보여줄 수 있도록 하자.
 					},	// end success
 	 				error: function(xhr){	// 응답 텍스트는 xhr 객체에 responseText 프로퍼티로 전달됨.
-	 					if(xhr.status == 1111){	// response.setStatus(1); 코드로 보낸 값을 받음.
+	 					if(xhr.status == 2001 || xhr.status == 2002 || xhr.status == 2003){	// 2001 or 2002 or 2003 error  ** alert 사용할 수 있음 error 넣어서
 		 					alert(xhr.responseText);	
 	 					}
 	 				}	// end error
@@ -109,7 +107,7 @@
 			$('body').on('click', '.delete_btn', function(){
 				if (confirm('삭제할까요?')) {
 				$.ajax({
-					url: 'deleteBoard.do',
+					url: 'deleteBoard.jdbc',
 					type: 'get',
 					data: 'bNo=' + $(this).prev().val(),
 					dataType: 'json',

@@ -1,0 +1,421 @@
+MY TOKEN :
+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
+
+Linux기반 ---- Vim (편집기)
+====> git편집할 때 Linux의 vim을 기본 편집기로 사용
+
+branch : master :: 예전부터 사용하고 있던 branch name -- master
+	main :: 요즘 사용하는 branch
+
+
+Git from the command line and also from 3rd-party software
+===> 다른 software도 사용할 수 있게 하겠다
+
+1. git-scm.com에서 git installer를 다운로드 받아서 설치한다.
+   Git-2.32.0.2-64-bit.exe 설치
+
+2. 설치 과정에서 바꾼 한 가지
+git init branch :: main branch로 setting
+나머지 :: 기본값
+
+3. Git Bash 실행 (linux command로 git 사용)
+   1) Linux 환경이다.
+   2) git 관련 command는 git으로 시작한다.
+
+4. Linux command
+   1) pwd : 현재 디렉터리의 경로 확인				-- Linux 작업 시작할 디렉터리 경로(root)
+   2) ls    : 현재 디렉터리에 포함된 파일 목록 확인		-- directory에 있는 파일들 다 보여줌 // 확장자 있으면 file 아니면 directory (ls : list줄임말)
+   3) mkdir : 디렉터리 만들기
+   4) cd : 디렉터리 이동
+       (1) ~ : 루트 디렉터리
+       (2)  . : 현재 디렉터리 
+       (3) ..  : 상위 디렉터리
+       (4) /  : 디렉터리 구분자
+   5) rmdir : 디렉터리 삭제		-- 지우고자하는 디렉터리의 상위 디렉터리로 이동해야 한다 :: cd .. << 상위 디렉터리로 이동(root directory)
+   6) touch : 파일 만들기
+   7) rm : 파일 삭제
+
+---------------------------------------------------------------------------------------------------------------------
+ linux command 연습	:: ##은 주석
+---------------------------------------------------------------------------------------------------------------------
+ITSC@DESKTOP-JEQ51QB MINGW64 ~		## ~는 루트 디렉터리를 의미함.
+$ pwd ## 현재 디렉터리의 경로 확인
+/c/Users/ITSC 
+
+ITSC@DESKTOP-JEQ51QB MINGW64 ~	
+$ ls    ## 현재 디렉터리에 포함된 파일의 목록 또는 디렉터리의 목록 확인하기	   ( ls == list )
+'3D Objects'/
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+...
+
+ITSC@DESKTOP-JEQ51QB MINGW64 ~			(mkdir == make directory )
+$ mkdir sample 	## 현재 디렉터리에 sample 디렉터리 만들기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 ~
+$ cd sample	## sample 디렉터리로 이동하기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 ~ /sample 		# 현재 경로가 변경됨.
+$ cd ..		## 상위 디렉터리로 이동
+
+ITSC@DESKTOP-JEQ51QB MINGW64 ~			## 현재 경로가 다시 상위 디렉터리로 변경 됨
+$ rmdir sample	## sample 디렉터리 삭제
+
+
+---------------------------------------------------------------------------------------------------------------------
+ Linux command 연습	:: ##은 주석
+---------------------------------------------------------------------------------------------------------------------
+복사    : Ctrl + Insert
+붙이기 : Shift + Insert
+---------------------------------------------------------------------------------------------------------------------
+ITSC@DESKTOP-JEQ51QB MINGW64 ~
+$ cd C:/SmartWeb0825/		## 각자 디렉터리로 이동.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825
+$ mkdir gitstudy			## gitstudy 디렉터리 만들기.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825
+$ cd gitstudy			## gitstudy 디렉터리로 이동
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy	## gitstudy 디렉터리로 이동되었음
+$ touch sample.txt			## sample.txt 파일 만들기. (내용은 없음) :: command :: touch
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ ls				## ls :: list command를 입력하여 안에 어떤 file이 있는지 확인
+sample.txt			## sample.txt 생성 확인.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ cat sample.txt			## sample.txt 파일 열기. (내용이 없어서 출력(변화)이 없음)
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ echo 'hello world' >> sample.txt	## 'hello world'를 sample.txt 파일에 기록하기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ cat sample.txt			##  sample.txt 파일 열기. (hello world가 출력됨)
+hello world
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ rm sample.txt			## sample.txt 파일 삭제.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ ls				## sample.txt 삭제 확인.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ nano sample.txt			## sample.txt 파일 있으면 열고, 없으면 만듦.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ ls
+sample.txt
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ rm sample.txt			## sample.txt 파일 삭제.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ ls				## sample.txt 삭제 확인.
+
+---------------------------------------------------------------------------------------------------------------------
+ Git 개요	
+---------------------------------------------------------------------------------------------------------------------
+1. 로컬  PC에 '로컬저장소(local repository)'를 만든다. (디렉터리 만들기)
+2. '로컬저장소'에 관리할 파일을 생성한다.
+3. 관리할 파일의 추적을 시작한다.
+4. 관리할 파일의 내용을 수정하고, 다시 추적하고, 관련 내용을 저장한다.
+5. 관리할 파일을 github의 '원격저장소(remote repository)'에 올린다.
+
+---------------------------------------------------------------------------------------------------------------------
+ Git command 		## 은 주석
+---------------------------------------------------------------------------------------------------------------------
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ mkdir local1			## 로컬저장소 만들기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy
+$ cd local1			## 로컬저장소로 이동하기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1	## 로컬저장소 local1 임.
+$ git init				## local1을 로컬저장소로 등록하기(숨김폴더 .git 생성됨)
+Initialized empty Git repository in C:/SmartWeb0825/gitstudy/local1/.git/
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ ls -a				## 옵션 -a : 숨김 보기
+./  ../  .git/
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)	## 초기화 branch는  master branch로 git 설치 시, 설정했으므로 (master) 브랜치로 나타남.
+$
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.name		## git 사용자 이름 확인
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.name '사용자 이름'  ##  (혼자 사용하는 PC라면, $ git config -- global user.name '사용자 이름'로 설정하면 편함.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.name 		## 위 과정을 통해 사용자 이름을 확인하면, 
+사용자 이름			## 등록된 git 사용자 이름을 확인할 수 있다.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.email 		## git 사용자 이메일 확인.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.email  '등록할 이메일' ## git 사용자 이메일 등록. (git config --global user email '등록할 이메일' 가능)
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git config user.email
+사용자 이메일
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ nano hello.java			## hello.java 파일 생성
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git status			## 로컬저장소의 상태 보기.
+
+## 상태 메세지
+On branch master			## master branch 사용중
+
+No commits yet			## commit 된 것이 없다.
+
+Untracked files:			## 추적 안하는 파일들이 있다.
+  (use "git add <file>..." to include in what will be committed)	## git add 명령으로 추적을 해라
+        hello.java
+
+nothing added to commit but untracked files present (use "git add" to track)		## 여기까지가 2. 로컬저장소에 관리할 파일 생성
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git add hello.java			## hello.java 파일을 추적하라.	
+warning: LF will be replaced by CRLF in hello.java.	## 그냥 warning 무시 :: linux와 window의 enter처리 차이이다.
+The file will have its original line endings in your working directory
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git status			## 로컬저장소의 상태 보기.
+
+## 상태 메시지
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   hello.java		## 새로운 파일 hello.java가 생겼구나 (추적 중) -- 삭제나 수정이 되었을 경우에도 추적 함.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ nano hello.java			## hello.java 열어서 수정하기.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git status			## 로컬저장소의 상태 보기.
+
+## 상태 메시지
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)	## git add hello.java를 취소하려면 git rm --chched hello.java 명령을 쓰라.
+        new file:   hello.java
+
+Changes not staged for commit:		## 변경된 내용이 추적되고 있지 않다. (파일이 바뀔때 마다 추적해야 한다.)
+  (use "git add <file>..." to update what will be committed)	## 변경사항을 적용하기 위해서 git add hello.java 명령을 써라.
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.java
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git commit				## 커밋한다. (저장한다. vim 편집기가 열림. )
+[master (root-commit) b91072e] [01:soJeongYoon] create hello.java	## 커밋은 반드시 메시지가 있어야 한다.
+ 1 file changed, 5 insertions(+)
+ create mode 100644 hello.java
+
+## vim 편집기 간단 사용
+## i     - INSERT 모드 (삽입 가능)
+## ESC - 모드 종료 (현재 모드 빠져나오기)
+## :wq - 저장하고 vim 편집기 닫기
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git commit -m '[01:soJeongYoon] create hello.java'		## 커밋 하면서 메시지 달기.
+
+## git add + git commit
+## 최초 1회는 add와 commit를 각각 처리해야 한다.
+## 2회차부터 아래와 같이 add와 commit을 함께 처리할 수 있다.
+## $ git commit -am '커밋메시지'
+
+## 여기까지 로컬 저장소 작업
+## 이제 github.com으로 가서 원격저장소 만들기
+
+## github.com의 원격저장소 만들기
+## 1. 저장소 이름 : local1		== repository name
+## 2. 접근 : public
+## 3. 옵션 : README file 생성(README.md)	** 걍 꼭 만들기	md == marked down
+
+## 원격저장소 위치 복사하기
+## 원격저장소의 '녹색 code 버튼' 클릭하면 주소 나옴. 복사함.
+## https://github.com/SojeongYoony/local1.git
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git remote add origin https://github.com/SojeongYoony/local1.git 	
+## 현재 로컬저장소의 원격저장소(origin) 등록하기.			 origin :: 원격 저장소
+
+## 중요 용어
+## 1. push : 로컬저장소 -> 원격저장소
+## 2. pull  : 원격저장소 -> 로컬저장소
+
+## 가장 먼저 해야 하는 일
+## pull을 먼저 해야 한다.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git pull origin master			## 원격저장소의 master branch 내려 받기.
+
+## 실패 메시지
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 594 bytes | 99.00 KiB/s, done.
+From https://github.com/SojeongYoony/local1
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+fatal: refusing to merge unrelated histories	## 두 저장소가 관련이 없다. 따라서 실패한다.	
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git pull origin master --allow-unrelated-histories	## 두 저장소가 관련이 없어도 가져와라.
+
+## 메시지 작성을 위해서 vim이 열리면 ' :wq ' 입력하고 빠져 나옴. 그러면 아래와 같이 메시지가 나옴
+
+From https://github.com/SojeongYoony/local1
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ README.md | 1 +				## 하나가 추가 되었다.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ ls
+README.md  hello.java			## 원격저장소의 README.md 파일을 내려 받았다.
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git push origin master
+
+ó▒▒▒▒▒▒ ▒▒▒▒ ▒▒▒▒: System.ComponentModel.Win32Exception: ▒߸▒▒▒ â ▒ڵ▒▒Դϴ▒		
+## Exception이고, Encoding 되지 않아 내용을 읽을 수는 없음
+   ▒▒ġ: MS.Win32.ManagedWndProcTracker.HookUpDefWindowProc(IntPtr hwnd)
+   ▒▒ġ: MS.Win32.ManagedWndProcTracker.OnAppDomainProcessExit()
+   ▒▒ġ: MS.Internal.ShutDownListener.HandleShutDown(Object sender, EventArgs e)
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 619 bytes | 619.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/SojeongYoony/local1.git
+   4e3c5dc..c85c7d4  master -> master
+
+
+
+=================================================================
+git init ====> repository
+git add ====> staging
+Add .gitignore ===> 추적하지 말아야할 것 설정		:: 만들어주는 page가 있음
+
+==================================================================
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git log
+commit 828d46610641cd4ae3d67362560c73430ab78b0b (HEAD -> master)		## 바로 직전 commit을 HEAD라고 한다.
+Author: SojeongYoony <y940425@gmail.com>
+Date:   Tue Nov 16 09:36:56 2021 +0900
+
+    [01:master]create sample.txt
+
+
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git log --oneline								## 한 줄 버전 :: 알아보기 수월함
+828d466 (HEAD -> master) [01:master]create sample.txt				## 아이디도 축약버전으로 나옴
+
+
+
+
+
+
+upload 순서
+add - commit - push
+
+1. add
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git add sample.txt
+
+
+2. commit
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git commit -m '[02:soJeongYoon] modify sample.txt'
+
+
+3. 원격지
+$ git remote add origin https://github.com/SojeongYoony/local1.git 
+
+
+4. pull
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git pull origin master --allow-unrelated-histories
+
+한다음 편집기 vim 종료 -- :wq
+
+--- history 맞춰짐
+
+5. push 
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git push origin master
+
+
+
+upload 순서
+add - commit - push
+
+1. add
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git add sample.txt
+
+===> git add .		## 변경된 모든 files 추적된다.
+
+
+
+2. commit
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git commit -m '[02:soJeongYoon] modify sample.txt'
+
+
+3. push 
+ITSC@DESKTOP-JEQ51QB MINGW64 /c/SmartWeb0825/gitstudy/local1 (master)
+$ git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

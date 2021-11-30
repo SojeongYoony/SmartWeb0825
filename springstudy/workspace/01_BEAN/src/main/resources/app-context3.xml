@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 1. List -->
+	<bean class="com.koreait.ex01.bean03.ListBean" id="listBean">
+		<property name="list">
+			<list>
+				<value>김밥</value>
+				<value>떡볶이</value>
+				<value>순대</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="com.koreait.ex01.bean03.ListBean" id="japaneseFood">
+		<property name="list">
+			<list>
+				<value>초밥</value>
+				<value>당고</value>
+				<value>타코야키</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 2. Set --> <!-- ** list와 사용방법 동일하고 tag's name만 다르다 같은 class소속이므로 -->
+	<bean class="com.koreait.ex01.bean03.SetBean" id="setBean">
+		<property name="set">
+			<set>
+				<value>JAVA</value>
+				<value>JAVA</value>
+				<value>JSP</value>
+				<value>JSP</value>
+				<value>SPRING</value>
+				<value>SPRING</value>
+			</set>
+		</property>
+	</bean>
+
+	<!-- 3. Map --> <!-- list, set과 달리 entry가 있고 그 안에, key/value가 들어가야 한다는 점 기억 -->
+	<bean class="com.koreait.ex01.bean03.MapBean" id="mapBean">
+		<property name="map">
+			<map>
+				<entry key="beginRecord" value="1" />
+				<entry key="endRecord" value="10" />
+			</map>
+		</property>
+	</bean>
+	
+
+</beans>

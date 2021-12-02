@@ -18,6 +18,5 @@ public class BoardConfig {
 		b.setContent("아주 급하다!!!");
 		return b;
 	}
-	
 
 }

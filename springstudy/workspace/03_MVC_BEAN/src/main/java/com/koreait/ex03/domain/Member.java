@@ -3,7 +3,6 @@ package com.koreait.ex03.domain;
 public class Member {
 	
 	// DTO의 역할을 한다
-	
 	private String id;
 	private String pw;
 	

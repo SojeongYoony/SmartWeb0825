@@ -10,5 +10,7 @@
 	<h1>Board Detail Page</h1>
 	<h1>제목 : ${board.title}</h1>
 	<h1>내용 : ${board.content}</h1>
+	<h1><a href="list.do"> 목록 보러 가기</a></h1>
+	
 </body>
 </html>

@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+ 
+ onload = function() {
+ 	
+ 	alert('WELCOME');
+ 	
+ }
+ 

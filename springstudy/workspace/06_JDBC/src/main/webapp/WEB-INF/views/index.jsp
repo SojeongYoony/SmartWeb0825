@@ -7,6 +7,6 @@
 <title>INDEX PAGE</title>
 </head>
 <body>
-	<a href="board/selectBoardList.do">게시판으로 이동</a>
+	<a href="/ex06/board/selectBoardList.do">게시판으로 이동</a>
 </body>
 </html>

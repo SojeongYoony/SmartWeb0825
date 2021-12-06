@@ -1,0 +1,22 @@
+
+
+		Web.xml
+		
+	<!-- Encoding -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>					-- 이건 그냥 내가 정하는 이름인데, encoding할 거니까 encodingFilter라고 씀
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>   -- class를 추가 함 
+		<init-param>
+			<param-name>encoding</param-name>	    -- encoding 뭘로 할거냐?
+			<param-value>UTF-8</param-value>		-- UTF-8
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>	-- 강제 encoding 할 거냐?
+			<param-value>true</param-value>			-- YES..!
+		</init-param>
+	</filter>
+	<filter-mapping>					-- 말 그대로 filter-mapping : mapping적는건데 어디에 적용시킬 거냐는 뜻.
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>  -- 현재 project의 모든 경로에 사용하겠다는 뜻 (/*)
+	</filter-mapping>	
+

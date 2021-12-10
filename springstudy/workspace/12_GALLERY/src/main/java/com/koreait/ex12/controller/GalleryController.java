@@ -1,5 +1,6 @@
 package com.koreait.ex12.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,24 @@ public class GalleryController {
 	public String selectGalleryByNo(@RequestParam("no") Long no, Model model) {
 		model.addAttribute("gallery", service.selectGalleryByNo(no));
 		return "gallery/detail";
+	}
+	
+	// post mapping download
+	@PostMapping("download")
+	public void download(HttpServletRequest request, HttpServletResponse response) {
+		service.download(request, response);
+	}
+	
+	// updateGallery
+	@PostMapping("updateGallery") // file 첨부는 무조건 post~!
+	public void updateGallery(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
+		service.updateGallery(multipartRequest, response);
+	}
+	
+	// deleteGallery
+	@PostMapping("deleteGallery")
+	public void deleteGallery(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
+		service.deleteGallery(multipartRequest, response);
 	}
 	
 }

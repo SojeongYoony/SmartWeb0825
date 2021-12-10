@@ -44,11 +44,23 @@
 				<c:forEach var="gallery" items="${list}">
 					<tr>
 						<td>${gallery.no}</td>
+						<%-- 	<c:if test="${empty gallery.origin}">
+								<td colspan="2"></td>
+							</c:if> --%>
 						<td><img alt="${gallery.origin}" src="/ex12/${gallery.path}/s_${gallery.saved}"></td>
 						<td><a href="/ex12/gallery/selectGalleryByNo?no=${gallery.no}">${gallery.title}</a></td>
 						<td>${gallery.writer}</td>
 						<td>${gallery.created}</td>
-						<td><i class="fas fa-paperclip"></i></td>
+						<td>
+							<c:if test="${not empty gallery.origin || gallery.saved }">
+								<form action="/ex12/gallery/download" method="post"> <!-- downloaded origin file name / path / saved name ect.. * form for download -->
+									<input type="hidden" name="origin" value="${gallery.origin}">
+									<input type="hidden" name="path" value="${gallery.path}">
+									<input type="hidden" name="saved" value="${gallery.saved}">
+									<button><i class="fas fa-paperclip"></i></button>
+								</form>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

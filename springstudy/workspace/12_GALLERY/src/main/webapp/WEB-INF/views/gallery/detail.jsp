@@ -46,6 +46,7 @@
 		<input type="hidden" name="path" value="${gallery.path}"> <!-- 경로 -->
 		<input type="hidden" name="saved" value="${gallery.saved}"> <!-- 저장 된 파일 이름 -->
 		<input type="hidden" name="origin" value="${gallery.origin}">
+		<input type="hidden" name="created" value="${gallery.created}"> <!-- 최종 등록일 -> 경로 작성을 위해 필요 함 : 어제자 폴더로 찾아가야 하므로 -->
 		작성자 : ${gallery.writer}<br>
 		작성일 : ${gallery.created}<br>
 		수정일 : ${gallery.lastModified}<br>

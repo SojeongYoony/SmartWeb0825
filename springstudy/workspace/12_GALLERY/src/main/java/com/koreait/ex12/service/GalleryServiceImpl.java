@@ -158,12 +158,24 @@ public class GalleryServiceImpl implements GalleryService {
 				}
 				
 				// * 새로운 첨부파일 / 썸네일 저장하기
+				// 기존 첨부가 없는 경우 path가 없어서 새로 생성해야 함
+				
+				// 기존 첨부가 없는 경우 작성일을 기준으로 경로를 생성
+				if (path.isEmpty()) {
+					String created = multipartRequest.getParameter("created");
+					String sep = Matcher.quoteReplacement(File.separator);
+					path = "resources" + sep + "upload" + sep + created.replaceAll("-", sep);
+					realPath = multipartRequest.getServletContext().getRealPath(path); // 실제로 저장 될 경로가 만들어진다.
+					File dir = new File(realPath);
+					if (dir.exists() == false) {
+						dir.mkdirs();
+					}
+				}
+				
 				String newOrigin = newFile.getOriginalFilename();
 				String extName = newOrigin.substring(newOrigin.lastIndexOf(".")); // extension name 확장자
 				String uuid = UUID.randomUUID().toString().replaceAll("-", ""); // 하이픈 없는 UUID : uuid를 random으로 돌리고 string(문자열)로 변환해서 replace all : 하이픈을 빈문자열로 바꾸겠다.
 				String newSaved = uuid + extName; // 새로 저장할 파일의 이름이 나온다.
-				
-				// * 첨부파일 서버에 업로드 (예외 처리 필요) 일리걸 / io exception
 				File uploadFile = new File(realPath, newSaved);
 				newFile.transferTo(uploadFile);
 				
@@ -173,11 +185,13 @@ public class GalleryServiceImpl implements GalleryService {
 				.toFile(new File(realPath, "s_" + newSaved));
 				
 				// 첨부가 있으면 DB에 path, origin, saved 저장
+				gallery.setPath(path);
 				gallery.setOrigin(newOrigin);
 				gallery.setSaved(newSaved);
 			}
 			// 변경할 첨부가 없으면 기존의 첨부파일 정보로 수정
 			else {						// 덮어쓰기 하는 방식임 xml의 query작업을 하지 않았음.
+				gallery.setPath(path);
 				gallery.setOrigin(origin);
 				gallery.setSaved(saved);
 			}

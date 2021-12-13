@@ -19,7 +19,7 @@ public class MailConfig {
 	 */
 	
 	@Bean
-	public JavaMailSender javaMailSender() {
+	public JavaMailSender javaMailSender() {  // Mail을 보내주는 함수
 		
 		JavaMailSenderImpl sender = new JavaMailSenderImpl();
 		sender.setHost("smtp.gmail.com"); 					// Gmail에서 보냅니다 : 정해진 값임

@@ -66,5 +66,13 @@ public class Member {
 	public void setRegisted(Date registed) {
 		this.registed = registed;
 	}
+
+	@Override
+	public String toString() {
+		return "Member [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", state="
+				+ state + ", registed=" + registed + "]";
+	}
+	
+	
 	
 }

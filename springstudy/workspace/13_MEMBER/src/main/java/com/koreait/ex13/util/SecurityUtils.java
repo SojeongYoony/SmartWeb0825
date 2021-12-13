@@ -9,7 +9,7 @@ public class SecurityUtils {
 
 	// 크로스 사이트 스크립트(XXS)
 	// 스크립트 코드 입력을 무력화 
-	public String xxs(String str) {
+	public static String xxs(String str) {
 		str = str.replaceAll("<", "&lt;");
 		str = str.replaceAll(">", "&gt;");
 		str = str.replaceAll("&", "&amp;");
@@ -57,7 +57,7 @@ public class SecurityUtils {
 			if (Math.random() < 0.5) {
 				sb.append(  (char)((int)(Math.random() * 26) + 'A')  );
 			} else {
-				sb.append(  (char)((int)(Math.random() * 26) + '0')  );
+				sb.append(  (char)((int)(Math.random() * 10) + '0')  );
 			}
 		}
 		System.out.println(sb);

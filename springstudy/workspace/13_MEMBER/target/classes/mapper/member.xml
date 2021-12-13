@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 
+	namespace는 com.koreait.ex13.repository 패키지의 NoticeRepository 인터페이스를 참조함. 
+	mapper의 각 태그 id가 NoticeRepository 인터페이스의 추상메소드 이름과 매핑된다.
+ -->
+<mapper namespace="com.koreait.ex13.repository.MemberRepository"> <!-- package.InterfaceClass'name -->
+	
+	<!-- for checking duplicate id -->
+	<select id="selectMemberById" parameterType="String" resultType="com.koreait.ex13.domain.Member">
+		SELECT NO, ID, PW, NAME, EMAIL, STATE, REGISTED
+		  FROM MEMBER
+		 WHERE ID = #{id}
+	</select>
+	
+	<!-- for JOIN NEW MEMBER : insert member into table -->
+	<insert id="joinMember" parameterType="com.koreait.ex13.domain.Member">
+		INSERT INTO MEMBER
+		VALUES (MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, 1, SYSDATE)
+	</insert>
+	
+	<!-- FOR LOGIN -->
+	<select id="login" parameterType="com.koreait.ex13.domain.Member" resultType="com.koreait.ex13.domain.Member">
+		SELECT NO, ID, PW, NAME, EMAIL, STATE, REGISTED
+		  FROM MEMBER
+		 WHERE ID = #{id} AND PW = #{pw} AND STATE = 1
+	</select>
+	
+	<select id="selectMemberByEmail" parameterType="String" resultType="com.koreait.ex13.domain.Member">
+		SELECT NO, ID, PW, NAME, EMAIL, STATE, REGISTED
+		  FROM MEMBER
+		 WHERE EMAIL = #{email}
+	</select>
+	<!-- 중복된 이메일이 들어가면 안되므로 이메일 select가 필요함 이게 싫으면 Exception으로 처리하는 방법있음 ! 내가 과제때 했던 Duplicate -->
+	
+	<!-- change password -->
+	<update id="updatePw" parameterType="com.koreait.ex13.domain.Member">
+		UPDATE MEMBER
+		   SET PW = #{pw}
+		 WHERE NO = #{no}
+	</update>
+	
+	<!-- update profile -->
+	<update id="updateMember" parameterType="com.koreait.ex13.domain.Member">
+		UPDATE MEMBER
+		   SET NAME = #{name}
+		     , EMAIL = #{email}
+		 WHERE NO = #{no}
+	</update>
+	
+	<!-- update state to checking member -->
+	<update id="leaveMember" parameterType="Long">
+		UPDATE MEMBER
+		   SET STATE = -1
+		 WHERE NO = #{no}
+	</update>
+	
+</mapper>

@@ -16,11 +16,23 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService service;
-
+	
+	@GetMapping(value="searchPage")
+	public String searchPage() {
+		return "employee/list";
+	}
+	
 	@GetMapping(value="findAll")
 	public String findAll(HttpServletRequest request, Model model) { // request : page 정보를 넘길 때 필요함 
 		model.addAttribute("request", request);
 		service.findAllEmployee(model); // service가 model을 필요로 하므로 주자, jsp로 정보를 넘길 때 필요한것이 model
+		return "employee/list";
+	}
+	
+	@GetMapping(value="findEmployee")
+	public String findEmployee(HttpServletRequest request, Model model) { // request로 받아 Model로 반환
+		model.addAttribute("request", request);
+		service.findEmployee(model);
 		return "employee/list";
 	}
 	

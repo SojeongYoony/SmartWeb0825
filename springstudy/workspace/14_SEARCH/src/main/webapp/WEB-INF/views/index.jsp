@@ -6,90 +6,10 @@
 <meta charset="UTF-8">
 <title>시작</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-<script>
-	$(document).ready(function(){
-		fnAreaSetting();
-		fnInit();
-		fnFindAll();
-	}); // onload event
-	
-	
-/* ************************************************************* fnAreaSetting() ************************************************************* */	
-	// 검색 화면 세팅 함수
-	function fnAreaSetting(){
-		$('#non_salary_area').css('display', 'none');
-		$('#salary_area').css('display', 'none');
-		$('#column').change(function(){
-			if ($(this).val() == '') { // 선택 안 했을 경우 == 둘 다 none
-				$('#non_salary_area').css('display', 'none');
-				$('#salary_area').css('display', 'none');
-			} else if ($(this).val() == 'SALARY') {
-				$('#salary_area').css('display', 'inline');
-				$('#non_salary_area').css('display', 'none');
-			} else {
-				$('#non_salary_area').css('display', 'inline');
-				$('#salary_area').css('display', 'none');
-			}
-		}) // column Change fn
-	} // End fnAreaSetting()
-	
-	
-/* ************************************************************* fnInit() ************************************************************* */	
- 	// 화면 초기화 함수
- 	function fnInit(){
-		$('#init_btn').click(function(){
-			$('#column').val('');
-			$('#query').val('');
-			$('#min').val('');
-			$('#max').val('');
-			$('#non_salary_area').css('display', 'none');
-			$('#salary_area').css('display', 'none');
-		});
-	} // End fnInit()
-	
-	
-/* ************************************************************* fnFindAll() ************************************************************* */	
-	// 전체 검색 함수
-	function fnFindAll(){
-		$('#find_all_btn').click(function(){
-			location.href='/ex14/search/findAll';
-		}) // click event
-		
-		
-	} // End fnFindAll()
-
-
-</script>
-
-
-
 </head>
 <body>
 
-	<h1>사원 검색 화면</h1>
+	<a href="/ex14/search/searchPage">검색 화면으로 이동</a>
 	
-	<form id="f" method="get"> <!-- 검색은 GET! -->
-		<select name="column" id="column">
-			<option value="">:::선택:::</option>
-			<option value="EMPLOYEE_ID">EMPLOYEE_ID</option>
-			<option value="FIRST_NAME">FIRST_NAME</option>
-			<option value="HIRE_DATE">HIRE_DATE</option>
-			<option value="SALARY">SALARY</option>
-		</select>
-		<span id="non_salary_area">
-			<input type="text" name="query" id="query">
-		</span>
-		<span id="salary_area">
-			<input type="number" name="min" id="min" placeholder="최소연봉">
-			~
-			<input type="number" name="max" id="max" placeholder="최대연봉">
-		</span>
-		<br><br>
-		<input type="button" value="검색" id="search_btn">
-		<input type="button" value="초기화" id="init_btn">
-		<input type="button" value="전체사원조회" id="find_all_btn">
-	</form>
-
 </body>
 </html>

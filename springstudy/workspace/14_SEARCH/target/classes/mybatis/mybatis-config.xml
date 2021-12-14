@@ -8,4 +8,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<settings>
 	  <setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
+	
+	<!-- 별명정하는 것. 이름이 기니까 줄여서 별명으로 쓸게 typeAliases:typeAlias -->
+	<typeAliases>
+		<typeAlias type="com.koreait.ex14.domain.Department" alias="Department" />
+		<typeAlias type="com.koreait.ex14.domain.Employee" alias="Employee" />
+	</typeAliases>
+	
+	
 </configuration>

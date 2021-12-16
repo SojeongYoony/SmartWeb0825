@@ -1,12 +1,15 @@
 package com.koreait.ex14.service;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -52,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		model.addAttribute("startNum", totalRecord - ( page - 1 ) * pageUtils.getRecordPerPage());
 		model.addAttribute("paging", pageUtils.getPageEntity("findAll")); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
 	
-	}
+	} // end findAllEmployee
 	
 	@Override
 	public void findEmployee(Model model) { // 위의 메소드와 같은 jsp로 이동이므로 사용되는 이름이 같아야 함.
@@ -61,10 +64,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Map<String, Object> m = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)m.get("request");
 		
-		// column + query => HashMap (검색할 칼럼 + 검색어) -- 검색할 column과 검색어(query)
+		// column + query + begin + end => HashMap (검색할 칼럼 + 검색어) -- 검색할 column과 검색어(query)
+		String column = request.getParameter("column");
+		String query = request.getParameter("query");
+		String begin = request.getParameter("begin");
+		String end = request.getParameter("end");
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("column", request.getParameter("column"));
-		map.put("query", request.getParameter("query"));
+		map.put("column", column);
+		map.put("query", query);
+		map.put("begin", begin);
+		map.put("end", end);
 		
 		// 검색된 레코드 갯수
 		int totalRecord = repository.selectFindRecordCount(map);
@@ -91,16 +100,49 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// 검색 조건에 따라서 파라미터가 달라짐
 		switch(request.getParameter("column")) {
 		case "EMPLOYEE_ID" :
-			model.addAttribute("paging", pageUtils.getPageEntity("findEmployee?column=EMPLOYEE_ID&query=" + request.getParameter("query"))); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
-			// Employee_id에 숫자가 아닌, 글자가 들어가면 exception 발생 함 : SQLSyntaxErrorException
-			break;
 		case "FIRST_NAME" :
-			model.addAttribute("paging", pageUtils.getPageEntity("findEmployee?column=FIRST_NAME&query=" + request.getParameter("query"))); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
+			model.addAttribute("paging", pageUtils.getPageEntity("findEmployee?column=" + column + "&query=" + query )); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
 			break;
 		case "HIRE_DATE" :
-			model.addAttribute("paging", pageUtils.getPageEntity("findEmployee?column=HIRE_DATE&query=" + request.getParameter("query"))); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
+		case "SALARY" :
+			model.addAttribute("paging", pageUtils.getPageEntity("findEmployee?column=" + column + "&begin=" + begin + "&end=" + end )); // 목록을 출력하는 매핑값 전달 -- 이동 mapping 넘겨주기
 			break;
 		}
-	}
+	} // end findEmployee
 
+	@Override
+	public void autoComplete(Map<String, Object> map, HttpServletResponse response) {
+		EmployeeRepository repository = sqlSession.getMapper(EmployeeRepository.class);
+		List<Employee> list = repository.autoComplete(map); // column과 일치하는 것을 찾아오기 때문에 사실은 column하나의 값 밖에 들어있지 않음. == dto bean 한개
+//		System.out.println("DB에서 가져온 List" + list.toString());
+		
+		// ajax 결과로 반환할 HashMap을 만들고, response로 응답해 줌.
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (list.size() == 0) {
+			result.put("status", 500);
+			result.put("list", null);
+		} else {
+			result.put("status", 200);
+			result.put("list", list);
+//			System.out.println(list);
+		}
+		
+		// response 응답
+		response.setContentType("text/html; charset=UTF-8");  // jackson이 Map을 json으로 바꿔 준다
+		try {
+			PrintWriter out = response.getWriter();
+			JSONObject obj = new JSONObject(result); // JSON Object 반환
+			out.println(obj.toString());
+//			System.out.println(obj);
+			out.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
 }

@@ -23,6 +23,15 @@
 	</repositories>
 	
 	<dependencies>
+		
+		<!-- json Object Class 지원 -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180813</version>
+		</dependency>
+			
 	
 		<!-- lombok 사용 시, lombok사용을 위한 dependency 추가 필수!! -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -51,6 +60,7 @@
 			<version>12.1.0.2</version>
 		</dependency>
 		
+		<!-- cgLib -->
 		<dependency>
 		    <groupId>cglib</groupId>
 		    <artifactId>cglib</artifactId>

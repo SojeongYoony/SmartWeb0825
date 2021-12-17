@@ -4,20 +4,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.koreait.ex15.repository.MemberRepository">
+
+	<!-- FOR PAGING -->
+	<select id="selectMemberCount" resultType="Integer">
+		SELECT COUNT(*)
+		  FROM MEMBER		  
+	</select>
 	
-	<select id="selectMemberList" resultType="Member">
-		SELECT MEMBER_NO, ID, NAME, ADDRESS, GENDER
-		  FROM MEMBER
+	<select id="selectMemberList" parameterType="Map" resultType="Member">
+		SELECT B.MEMBER_NO, B.ID, B.NAME, B.ADDRESS, B.GENDER
+		  FROM (SELECT ROWNUM AS RN, A.MEMBER_NO, A.ID, A.NAME, A.ADDRESS, A.GENDER
+		  		  FROM (SELECT MEMBER_NO, ID, NAME, ADDRESS, GENDER
+		  		  		  FROM MEMBER
+		  		  		 ORDER BY MEMBER_NO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 
 	<!-- insertMember : 메소드가 진행되면 key값을 반환한다. -->
+	<!-- order : 삽입 전, 이뤄진다 -->
 	<insert id="insertMember" parameterType="Member">
 		<selectKey keyProperty="memberNo" order="BEFORE" resultType="Long">
 			SELECT MEMBER_SEQ.NEXTVAL
 			  FROM DUAL			
 		</selectKey>
 		INSERT INTO MEMBER
-		VALUES (MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{gender}, #{address})
+		VALUES (#{memberNo}, #{id}, #{name}, #{gender}, #{address})
 	</insert>
 	
 	<select id="slectMemberByNO" parameterType="Long" resultType="Member">

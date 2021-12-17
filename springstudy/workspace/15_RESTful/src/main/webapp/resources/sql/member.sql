@@ -6,7 +6,7 @@ CREATE TABLE MEMBER
     MEMBER_NO NUMBER PRIMARY KEY,
     ID VARCHAR2(100) NOT NULL UNIQUE,
     NAME VARCHAR2(100),
-    GENDER VARCHAR2(2),
+    GENDER VARCHAR2(3),
     ADDRESS VARCHAR2(100)
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE BOARD_ATTACH
     FILETYPE VARCHAR2(1) DEFAULT 'I',
     BOARD_NO NUMBER REFERENCES BOARD (BOARD_NO)
 );
--- ÀúÀåµÈ Ã·ºÎÆÄÀÏ¸íÀ» ÀÇ¹ÌÇÔ FILE NAME
--- ÀÌ¹ÌÁö¸¦ ±âº»°ªÀ¸·Î ¼³Á¤ DEFAULT¸¦ ÅëÇØ ±âº» °ªÀ» ºÎ¿©ÇÒ ¼ö ÀÖ´Ù.
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½ FILE NAME
+-- ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DEFAULTï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
 DROP SEQUENCE BOARD_SEQ;
 CREATE SEQUENCE BOARD_SEQ NOCACHE;

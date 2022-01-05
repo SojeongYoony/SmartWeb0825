@@ -1,0 +1,103 @@
+Spring : 개발자에게 봄을 선사한다
+
+1. Spring legacy project : sts 3.x(Spring tool suite)
+   - Spring MVC Project		-- MVC 개념은 필수
+   - Mybatis		
+		-- 이것도 코드가 긴 것 같아서 Spring boot가 나옴
+		-- 기존에 작성 된 것은 이 버전일 가능성이 높고
+		-- 이 버전을 먼저 학습 하고 Spring boot로 넘어간다.
+		-- 전체적인 것은 이 것을 학습하는 것이 좋다.
+
+2. Spring boot : sts 4.x(Spring tool suite)
+   - Mybatis or JPA(Java Persistence API)	-- 둘의 차이 : DB의 구성이 다르고, 사용이 다르다
+   - JSP or html + template
+					-- thymeleaf : JSTL 문법과 흡사하다) 
+					-- 자바 영역을 사용하기 위해 template을 학습해야 하는데 초보의 경우 학습하기가 어렵다
+   - war or jar
+					-- 앞으로 작성할 버전은 이 버전일 가능성이 높다.
+					-- 업데이트 버전간의 차이가 크다	==> 계속하여 학습이 필요함
+					-- 간단한 CRUD 정도 연습해 볼 예정
+
+공식 홈페이지 : spring.io
+sts 3.x
+sts 4.x ==> 기본
+
+진행 : sts 4.x 다운로드 + sts 3.x 기능 추가
+
+
+Project - Develplment tools :Spring Tools4(sts 4.x)
+
+sts -- eclipse 기반 -- 맞게 배포
+
+
+https://www.eclipse.org/
+-- Download package -> Eclipse 2020-06(4.16)
+
+
+Workspace 먼저 만들어야함 == eclipse랑 같음
+환경설정 - encoding, 글꼴 
+톰캣 추가
+sts 3.x 추가 설치 ==>to use legacy project
+
+Spring이 만드는 객체 연습 함 --> 두 가지	** new를 사용하지 않는 객체 생성
+xml로 만드는 법 / java로 만드는 법
+
+					** web에서 repository를 받아서 사용하기 때문에 internet 연결 필수 (to get jar files)
+						    --> 그에 따른 오류도 많음(오류 학습 필요)
+
+
+
+-----------------------------------------
+sts 4.12 + add on 3.9.19
+	Spring MVC Project
+	Spring boot
+
+----------------if 실패-------------------
+
+sts 3.9
+     Spring MVC Project
+sts 3.12
+     Spring boot
+
+
+-----------------------------------------
+Window - perspective - Open perspective - other - Spring (open)
+View 정리 (Servers 옮기고 나머지는 닫기)
+Server 추가하기 -- 기존의 tomcat(8.5)과 같은것 사용
+Window - Preferences
+- theme (dark, light)
+- font
+- encoding
+    - General - Workspace - Text file encoding - UTF-8
+    - Web - CSS Files / HTML Files / JSP Files - UTF-8
+
+- WebBrowser - chrome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,6 +20,10 @@
 		} else if ( $('#title').val().trim() == '' ) {
 			alert('제목을 입력해주세요!');
 			return;
+		} else if ( $('#content').val().trim() == '' ) {
+			if ( confirm('입력된 내용이 없습니다. 등록하시겠습니까?') == false ) {
+				return;
+			}
 		}
 		
 		f.action = '${pageContext.request.contextPath}/board/add';
@@ -42,7 +46,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea rows="10" cols="50" name="content"></textarea></td>
+					<td><textarea rows="10" cols="50" name="content" id="content"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2">

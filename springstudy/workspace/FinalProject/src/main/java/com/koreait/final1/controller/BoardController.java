@@ -41,7 +41,6 @@ public class BoardController {
 	@PostMapping(value="/board/add")
 	public void add(Board board, HttpServletRequest request, HttpServletResponse response) {
 		try {
-	
 			int result = boardService.addBoard(board);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -72,17 +71,14 @@ public class BoardController {
 	@GetMapping(value="/board/modify")
 	public void modify(Board board, HttpServletRequest request, HttpServletResponse response) {
 		try {
-
 			
 			int result = boardService.modifyBoard(board);
-			
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			if (result > 0) {
 				out.append("<script>");
 				out.append("alert('수정 성공');");
-//				out.append("location.href='" + request.getContextPath() + "/board/list';");
 				out.append("location.href='" + request.getContextPath() + "/board/detail?idx="+board.getIdx()+"';");
 				out.append("</script>");
 				out.close();
